@@ -1,0 +1,93 @@
+### canonical run: threads=8 cpu-depth=4 (balanced branches)
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 14912 MiB):
+  Device 0: Tesla T4, compute capability 7.5, VMM: yes, VRAM: 14912 MiB
+ggml_backend_cuda_graph_compute: CUDA graph warmup complete
+ggml_backend_cuda_graph_compute: CUDA graph warmup complete
+ggml_backend_cuda_graph_compute: CUDA graph warmup complete
+ggml_backend_cuda_graph_compute: CUDA graph warmup complete
+GPU: Tesla T4
+CPU backend threads: 8 (hw concurrency 8)
+CPU chain : K=1024 B=256 depth=4
+CUDA chain: K=2048 B=2048 depth=3
+iters=30
+
+branch A (CPU)  work: 2.147 GFLOP
+branch B (CUDA) work: 51.540 GFLOP
+
+== [0] isolated branch times ==
+  T_A  (CPU branch, main thread)                 best   13.781 ms   med   13.836 ms   mean   13.850 ms
+  T_A' (CPU branch, from worker thread)          best   14.167 ms   med   14.254 ms   mean   14.276 ms
+  T_B  (CUDA branch)                             best   12.603 ms   med   12.813 ms   mean   12.949 ms
+  -> CPU 155.2 GFLOPS   CUDA 4022.6 GFLOPS
+  -> T_A+T_B = 26.648 ms   max(T_A,T_B) = 13.836 ms
+
+== [1] manual SERIAL (what sched does today) ==
+  serial A then B                                best   21.579 ms   med   21.719 ms   mean   22.045 ms
+
+== [2] concurrent, async-only (issue CUDA first, CPU on main thread) ==
+  async-only overlap                             best   13.800 ms   med   13.910 ms   mean   13.916 ms
+
+== [3] concurrent, CPU split on std::thread ==
+  fresh std::thread per iteration                best   15.887 ms   med   16.090 ms   mean   16.139 ms
+  persistent worker thread (cv handoff)          best   14.885 ms   med   15.147 ms   mean   15.143 ms
+
+== [4] default ggml_backend_sched on the same 2-branch graph ==
+  n_splits = 2
+  ggml_backend_sched_graph_compute               best   20.932 ms   med   21.039 ms   mean   21.305 ms
+  sched wall / (T_A+T_B) = 0.790     sched wall / max(T_A,T_B) = 1.52
+
+== [5] deferral-shaped topology + numerical correctness ==
+  expert(CPU) 2.147 GFLOP   attn(CUDA) 53.687 GFLOP   join shape [1024,256]
+  correctness (async-only overlap) : 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+  correctness (worker-thread overlap): 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+  deferral serial                                best   39.952 ms   med   40.593 ms   mean   40.570 ms
+  deferral concurrent (async-only)               best   31.227 ms   med   31.589 ms   mean   31.618 ms
+  deferral concurrent (worker thread)            best   31.986 ms   med   32.427 ms   mean   32.468 ms
+  speedup async-only = 1.285x   worker-thread = 1.252x
+
+== [6] dispatch overhead per split-pair (tiny graphs) ==
+  tiny: CPU only                                   0.0102 ms/pair
+  tiny: CUDA only                                  0.0076 ms/pair
+  tiny: serial pair                                0.0192 ms/pair
+  tiny: async-only overlap                         0.0160 ms/pair
+  tiny: fresh std::thread                          0.8941 ms/pair
+  tiny: persistent worker                          0.1470 ms/pair
+
+  overhead vs serial pair:
+    async-only     :  -0.0032 ms/pair
+    fresh thread   :  +0.8749 ms/pair  (thread spawn+join cost)
+    persistent wrk :  +0.1277 ms/pair  (cv handoff cost)
+    [ref] cpu-only 0.0102  cuda-only 0.0076  serial 0.0192 ms
+
+== [7] per-layer granularity: 32 alternating split-pairs per token ==
+  per-layer: CPU 0.0671 GFLOP, CUDA 1.6106 GFLOP (K=1024 B=32, cpu_depth=1 gpu_depth=24)
+  per-layer isolated: CPU 0.4310 ms   CUDA 1.0333 ms
+  token: serial (all 2L splits in order)         best   43.880 ms   med   44.211 ms   mean   44.195 ms
+  token: async-only overlap                      best   32.512 ms   med   32.952 ms   mean   32.972 ms
+  token: persistent worker thread                best   32.507 ms   med   32.876 ms   mean   32.974 ms
+  ideal serial 46.859 ms   ideal perfect-overlap 33.065 ms
+  speedup: async-only 1.342x   worker-thread 1.345x
+  overlap efficiency: async-only 101.0%   worker-thread 101.7%
+  per-split-pair overhead vs serial: async-only -0.0035 ms  worker -0.0059 ms
+
+== SUMMARY ==
+  T_A (CPU)   = 13.836 ms
+  T_B (CUDA)  = 12.813 ms
+  T_A + T_B   = 26.648 ms  (serial ideal)
+  max(T_A,T_B)= 13.836 ms  (perfect overlap ideal)
+  measured serial       = 21.719 ms
+  measured async-only   = 13.910 ms
+  measured worker-thread= 15.147 ms
+  overlap efficiency (100% = perfect): async-only 99.4%  worker-thread 89.8%
+
+### repeat x3 correctness stress
+== [5] deferral-shaped topology + numerical correctness ==
+  correctness (async-only overlap) : 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+  correctness (worker-thread overlap): 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+== [5] deferral-shaped topology + numerical correctness ==
+  correctness (async-only overlap) : 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+  correctness (worker-thread overlap): 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+== [5] deferral-shaped topology + numerical correctness ==
+  correctness (async-only overlap) : 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+  correctness (worker-thread overlap): 0/262144 differing floats, max|diff| = 0.000e+00  -> BIT-IDENTICAL
+STRESS_RC=0

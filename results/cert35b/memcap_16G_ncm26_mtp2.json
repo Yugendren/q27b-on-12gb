@@ -1,0 +1,22 @@
+{
+ "tag": "memcap_16G_ncm26_mtp2",
+ "cap": "16G",
+ "ncm": 26,
+ "spec": "mtp2",
+ "status": "OK",
+ "cap_bound": true,
+ "memory_max_bytes": "17179869184",
+ "load_s": 25,
+ "cgroup_memory_peak": 17179873280,
+ "cgroup_memory_current": 17178148864,
+ "memory_events": "low 0 high 0 max 4563 oom 0 oom_kill 0 oom_group_kill 0 ",
+ "memory_pressure": "some avg10=0.09 avg60=1.72 avg300=0.75 total=2878281 full avg10=0.09 avg60=1.71 avg300=0.75 total=2858119 ",
+ "decode_tps": [
+  46.6,
+  47.46,
+  47.35,
+  38.28
+ ],
+ "decode_tps_mean": 44.9225,
+ "prefill_tps_mean": 127.05000000000001
+}

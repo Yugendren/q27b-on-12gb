@@ -1,0 +1,37 @@
+{
+  "tag": "tpt_legacy_ship",
+  "n_tasks": 25,
+  "max_attempts": 1,
+  "pass_at_N": {
+    "1": {
+      "passed": 23,
+      "rate": 0.92,
+      "ci95": [
+        0.750338910496047,
+        0.9777795987151525
+      ]
+    }
+  },
+  "mean_attempts_to_pass_among_solved": 1.0,
+  "mean_attempts_all_tasks": 1.0,
+  "mean_completion_tokens_per_task": 473.96,
+  "total_completion_tokens": 11849,
+  "tokens_per_additional_solve": null,
+  "wall_time_s": 334.55,
+  "endpoint": "http://127.0.0.1:18098",
+  "model_id": "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+  "timestamp": "2026-09-02T08:06:12.351221+00:00",
+  "params": {
+    "endpoint": "http://127.0.0.1:18098",
+    "out": "/data/projects/q27b_on_12gb/results/speed_recert/tpt_legacy.jsonl",
+    "summary": "/data/projects/q27b_on_12gb/results/speed_recert/tpt_legacy.json",
+    "max_attempts": 1,
+    "limit": 25,
+    "data_dir": "/data/projects/q27b_on_12gb/platform_arm/harness/data",
+    "max_tokens": 1024,
+    "temp_retry": 0.8,
+    "top_p": 0.95,
+    "concurrency": 1,
+    "tag": "tpt_legacy_ship"
+  }
+}

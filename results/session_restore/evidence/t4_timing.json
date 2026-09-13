@@ -1,0 +1,260 @@
+{
+ "rows": [
+  {
+   "row": "patched cold prefill 8K",
+   "reps": [
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15743.394,
+     "predicted_n": 16,
+     "predicted_ms": 768.547,
+     "predicted_per_second": 19.517348971500766,
+     "wall_s": 16.522
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15784.37,
+     "predicted_n": 16,
+     "predicted_ms": 769.242,
+     "predicted_per_second": 19.49971530415656,
+     "wall_s": 16.564
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15811.23,
+     "predicted_n": 16,
+     "predicted_ms": 769.632,
+     "predicted_per_second": 19.48983410253212,
+     "wall_s": 16.591
+    }
+   ],
+   "median_wall_s": 16.564,
+   "median_prompt_n": 8023,
+   "median_prompt_ms": 15784.37
+  },
+  {
+   "row": "patched action=save",
+   "reps": [
+    {
+     "id_slot": 0,
+     "filename": "t4_0.bin",
+     "n_saved": 8038,
+     "n_written": 997687036,
+     "timings": {
+      "save_ms": 468.557
+     },
+     "_file_bytes": 997687036,
+     "_wall_s": 0.469
+    },
+    {
+     "id_slot": 0,
+     "filename": "t4_1.bin",
+     "n_saved": 8038,
+     "n_written": 997687036,
+     "timings": {
+      "save_ms": 466.874
+     },
+     "_file_bytes": 997687036,
+     "_wall_s": 0.468
+    },
+    {
+     "id_slot": 0,
+     "filename": "t4_2.bin",
+     "n_saved": 8038,
+     "n_written": 997687036,
+     "timings": {
+      "save_ms": 459.541
+     },
+     "_file_bytes": 997687036,
+     "_wall_s": 0.46
+    }
+   ],
+   "median_t_ms": 0,
+   "median_bytes": 997687036
+  },
+  {
+   "row": "patched action=restore",
+   "reps": [
+    {
+     "id_slot": 0,
+     "filename": "t4_0.bin",
+     "n_restored": 8038,
+     "n_read": 997687036,
+     "timings": {
+      "restore_ms": 262.147
+     },
+     "_file_bytes": 997687036,
+     "_wall_s": 0.263
+    },
+    {
+     "id_slot": 0,
+     "filename": "t4_1.bin",
+     "n_restored": 8038,
+     "n_read": 997687036,
+     "timings": {
+      "restore_ms": 249.615
+     },
+     "_file_bytes": 997687036,
+     "_wall_s": 0.25
+    },
+    {
+     "id_slot": 0,
+     "filename": "t4_2.bin",
+     "n_restored": 8038,
+     "n_read": 997687036,
+     "timings": {
+      "restore_ms": 246.816
+     },
+     "_file_bytes": 997687036,
+     "_wall_s": 0.248
+    }
+   ],
+   "median_t_ms": 0
+  },
+  {
+   "row": "patched first request after restore",
+   "reps": [
+    {
+     "cache_n": 8019,
+     "prompt_n": 4,
+     "prompt_ms": 156.404,
+     "predicted_n": 16,
+     "predicted_ms": 757.834,
+     "predicted_per_second": 19.793252875959645,
+     "wall_s": 0.924
+    },
+    {
+     "cache_n": 8019,
+     "prompt_n": 4,
+     "prompt_ms": 154.23,
+     "predicted_n": 16,
+     "predicted_ms": 761.244,
+     "predicted_per_second": 19.70458880464082,
+     "wall_s": 0.925
+    },
+    {
+     "cache_n": 8019,
+     "prompt_n": 4,
+     "prompt_ms": 155.969,
+     "predicted_n": 16,
+     "predicted_ms": 762.094,
+     "predicted_per_second": 19.682611331410563,
+     "wall_s": 0.928
+    }
+   ],
+   "median_wall_s": 0.925,
+   "median_cache_n": 8019,
+   "median_prompt_n": 4,
+   "median_prompt_ms": 155.969
+  },
+  {
+   "row": "unpatched cold prefill 8K",
+   "reps": [
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15826.175,
+     "predicted_n": 16,
+     "predicted_ms": 768.975,
+     "predicted_per_second": 19.50648590656393,
+     "wall_s": 16.605
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15875.425,
+     "predicted_n": 16,
+     "predicted_ms": 769.965,
+     "predicted_per_second": 19.48140499892852,
+     "wall_s": 16.655
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15889.899,
+     "predicted_n": 16,
+     "predicted_ms": 771.139,
+     "predicted_per_second": 19.45174605356492,
+     "wall_s": 16.671
+    }
+   ],
+   "median_wall_s": 16.655
+  },
+  {
+   "row": "unpatched first request after restore",
+   "reps": [
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15881.879,
+     "predicted_n": 16,
+     "predicted_ms": 765.492,
+     "predicted_per_second": 19.595240707936856,
+     "wall_s": 16.657
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15894.389,
+     "predicted_n": 16,
+     "predicted_ms": 765.046,
+     "predicted_per_second": 19.606664174441796,
+     "wall_s": 16.669
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15902.906,
+     "predicted_n": 16,
+     "predicted_ms": 765.903,
+     "predicted_per_second": 19.584725480902932,
+     "wall_s": 16.682
+    }
+   ],
+   "median_wall_s": 16.669,
+   "median_cache_n": 0,
+   "median_prompt_n": 8023
+  },
+  {
+   "row": "RAM-cache control (cache-ram 8192, erase, 2nd identical req)",
+   "reps": [
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15913.513,
+     "predicted_n": 16,
+     "predicted_ms": 767.703,
+     "predicted_per_second": 19.53880602264157,
+     "wall_s": 16.691
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15914.498,
+     "predicted_n": 16,
+     "predicted_ms": 768.83,
+     "predicted_per_second": 19.510164795858643,
+     "wall_s": 16.693
+    },
+    {
+     "cache_n": 0,
+     "prompt_n": 8023,
+     "prompt_ms": 15913.204,
+     "predicted_n": 16,
+     "predicted_ms": 766.806,
+     "predicted_per_second": 19.56166227181321,
+     "wall_s": 16.69
+    }
+   ],
+   "median_wall_s": 16.691,
+   "median_cache_n": 0,
+   "median_prompt_n": 8023
+  }
+ ],
+ "speedup_patched_vs_unpatched_after_restore": 18.02,
+ "speedup_patched_restore_vs_cold_prefill": 17.91,
+ "ram_cache_wall_s": 16.691
+}

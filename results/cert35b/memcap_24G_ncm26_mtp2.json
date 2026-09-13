@@ -1,0 +1,22 @@
+{
+ "tag": "memcap_24G_ncm26_mtp2",
+ "cap": "24G",
+ "ncm": 26,
+ "spec": "mtp2",
+ "status": "OK",
+ "cap_bound": true,
+ "memory_max_bytes": "25769803776",
+ "load_s": 23,
+ "cgroup_memory_peak": 23842779136,
+ "cgroup_memory_current": 23842476032,
+ "memory_events": "low 0 high 0 max 0 oom 0 oom_kill 0 oom_group_kill 0 ",
+ "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0 full avg10=0.00 avg60=0.00 avg300=0.00 total=0 ",
+ "decode_tps": [
+  47.52,
+  47.99,
+  47.49,
+  43.09
+ ],
+ "decode_tps_mean": 46.5225,
+ "prefill_tps_mean": 128.425
+}

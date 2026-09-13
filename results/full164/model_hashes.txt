@@ -1,0 +1,7 @@
+e792d8fb3142fe6d9171876d6da0f71f05a71028718debc72dbec93ff645e67d  models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf
+7897d2c5a5cee46aef50895141b2c8a0803c1185f3d03c4fda4cd137a7ad77fe  models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_S.gguf
+fd4730dd8aad070517978752b63d530aeb1740d2283cab9fa24f1e404032ddb0  models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf
+c0b7c3038681ed2e3040456c1dd45f9858b6c2290bed172c70388a94874f3eee  models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf
+75bc9c8adba2842e72f0ab5201aaa07133c5010b566305c09187fcbdcd364017  models/unsloth-q27b/Qwen3.8-27B-UD-Q4_K_S.gguf
+26b7855c48dd367bc13d02304561438dc1b50563d75c8c826e8c2b0028f340c4  models/minitron/Qwen3.8-20B-Minitron.i1-IQ4_XS.gguf
+HASHDONE

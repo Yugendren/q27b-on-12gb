@@ -1,0 +1,135 @@
+From: q27b mmvq-routing probe
+Subject: [PATCH] CUDA: env-gated MMVQ->MMQ crossover for small verify batches
+
+Route compute-bound quantized mul_mat with ne11 >= GGML_CUDA_MMQ_MIN_BATCH to MMQ
+instead of MMVQ. Default (unset) is stock behaviour. ne11 == 1 is never affected.
+
+Applies on top of the v11 dirty tree at llama.cpp daef7b687 (mmvq.cu EXPERIMENT C
+rows-per-block + vecdotq.cuh SWAR i-quant patch both untouched by this diff).
+
+diff --git a/ggml/src/ggml-cuda/ggml-cuda.cu b/ggml/src/ggml-cuda/ggml-cuda.cu
+--- a/ggml/src/ggml-cuda/ggml-cuda.cu
++++ b/ggml/src/ggml-cuda/ggml-cuda.cu
+@@ -1812,6 +1812,93 @@
+     }
+ 
+     return use_mul_mat_vec_q;
++}
++
++// [TAG_Q27B_MMQ_MIN_BATCH]
++// MMVQ re-runs the weight dequant once per output column: see the ncols_dst loop in
++// ggml/src/ggml-cuda/mmvq.cu (vec_dot_q_cuda is called ncols_dst * rows_per_cuda_block
++// times per weight block, with the same `vx`), and the comment in
++// ggml_cuda_should_use_mmvq(): "k-quants cost more to decode and mvq redoes that per
++// column, so MMQ wins sooner". MMQ instead stages one dequantized tile in shared memory
++// and reuses it across every column.
++//
++// ggml_cuda_should_use_mmvq() has hand-tuned per-type crossovers for Ada Lovelace,
++// Blackwell, GB10 and CDNA, but *none for Ampere*, and no i-quant type is tuned on any
++// architecture -- they all fall through to the generic `ne11 <= MMVQ_MAX_BATCH_SIZE` (8).
++// On a sub-4-bit i-quant model that makes every extra column of a speculative-decode
++// verify batch re-pay the full codebook/LUT decode.
++//
++// GGML_CUDA_MMQ_MIN_BATCH=N   route affected types to MMQ when ne11 >= N (N >= 2).
++//                             Unset, 0 or 1 => stock behaviour (the default).
++//                             ne11 == 1 is never affected: that is the tuned batch-1
++//                             decode path (rows-per-block + SWAR i-quant vec_dot).
++// GGML_CUDA_MMQ_ALL_TYPES=1   widen from the compute-bound set below to every type MMQ
++//                             supports (adds IQ4_XS/Q4_K/Q5_K/Q6_K/Q4_0/...).
++//
++// The default type set is the measured compute-bound ("LUT/codebook dequant") group from
++// results/kernel_profile.md section 3 -- the ones running at 40-58% of peak bandwidth with
++// SM 59-84%. IQ4_XS / Q4_K / Q5_K are deliberately excluded: they already hit 90.1% of
++// peak at batch 1, are bandwidth-bound, and have nothing for MMQ to recover.
++static int ggml_cuda_mmq_min_batch() {
++    static const int min_batch = []() {
++        const char * s = getenv("GGML_CUDA_MMQ_MIN_BATCH");
++        const int    v = s ? atoi(s) : 0;
++        // MMVQ is never consulted above MMVQ_MAX_BATCH_SIZE, so this disables the override.
++        return v >= 2 ? v : MMVQ_MAX_BATCH_SIZE + 1;
++    }();
++    return min_batch;
++}
++
++static bool ggml_cuda_mmq_all_types() {
++    static const bool all = []() {
++        const char * s = getenv("GGML_CUDA_MMQ_ALL_TYPES");
++        return s != nullptr && atoi(s) != 0;
++    }();
++    return all;
++}
++
++static bool ggml_cuda_mmq_min_batch_type(enum ggml_type type) {
++    if (ggml_cuda_mmq_all_types()) {
++        return true;
++    }
++    switch (type) {
++        case GGML_TYPE_Q2_K:
++        case GGML_TYPE_Q3_K:
++        case GGML_TYPE_IQ1_S:
++        case GGML_TYPE_IQ2_XXS:
++        case GGML_TYPE_IQ2_XS:
++        case GGML_TYPE_IQ2_S:
++        case GGML_TYPE_IQ3_XXS:
++        case GGML_TYPE_IQ3_S:
++            return true;
++        default:
++            return false;
++    }
++}
++
++// True when the override should take this matmul away from MMVQ and hand it to MMQ.
++// Requires ggml_cuda_should_use_mmq() to actually claim it -- otherwise declining MMVQ
++// would fall through to cuBLAS, which dequantizes the entire weight tensor to f16.
++// That guard also makes unsupported types (e.g. IQ1_M) safe by construction.
++static bool ggml_cuda_prefer_mmq_small_batch(enum ggml_type type, int cc, int64_t ne11, int64_t n_experts) {
++    if (ne11 < 2 || ne11 < ggml_cuda_mmq_min_batch()) {
++        return false;
++    }
++    if (!ggml_cuda_mmq_min_batch_type(type)) {
++        return false;
++    }
++    if (!ggml_cuda_should_use_mmq(type, cc, ne11, n_experts)) {
++        return false;
++    }
++    static bool logged = false;
++    if (!logged) {
++        logged = true;
++        GGML_LOG_INFO("%s: GGML_CUDA_MMQ_MIN_BATCH=%d active (all_types=%d): routing quantized "
++                      "mul_mat with ne11 >= %d to MMQ instead of MMVQ\n",
++                      __func__, ggml_cuda_mmq_min_batch(), (int) ggml_cuda_mmq_all_types(),
++                      ggml_cuda_mmq_min_batch());
++    }
++    return true;
+ }
+ 
+ static void ggml_cuda_mul_mat(ggml_backend_cuda_context & ctx, const ggml_tensor * src0, const ggml_tensor * src1, ggml_tensor * dst) {
+@@ -1859,7 +1946,9 @@
+         ggml_cuda_mul_mat_f(ctx, src0, src1, nullptr, dst);
+         return;
+     }
+-    if (ggml_cuda_should_use_mmvq(src0->type, cc, ne11)) {
++    // [TAG_Q27B_MMQ_MIN_BATCH]
++    if (ggml_cuda_should_use_mmvq(src0->type, cc, ne11) &&
++        !ggml_cuda_prefer_mmq_small_batch(src0->type, cc, ne11, /*n_experts =*/ 0)) {
+         ggml_cuda_mul_mat_vec_q(ctx, src0, src1, nullptr, dst);
+         return;
+     }
+@@ -1919,7 +2008,16 @@
+         if (ne2 <= MMVQ_MAX_BATCH_SIZE) {
+             if (ggml_is_quantized(src0->type)) {
+                 const int mmvq_mmid_max = get_mmvq_mmid_max_batch(src0->type, cc);
+-                if (ne2 <= mmvq_mmid_max) {
++                // [TAG_Q27B_MMQ_MIN_BATCH] MoE experts take the same per-column re-decode
++                // hit. Require the *exact* predicate of the MMQ branch below so declining
++                // MMVQ here can only ever land on MMQ, never on the cuBLAS fallback.
++                // ggml_cuda_mul_mat_id_needs_sync() is intentionally left alone: it returns
++                // false for both the MMVQ-mmid branch and the MMQ branch, so rerouting
++                // between them does not change its answer and CUDA graphs stay valid.
++                const bool prefer_mmq =
++                    ggml_cuda_prefer_mmq_small_batch(src0->type, cc, ne2, /*n_experts =*/ ne02) &&
++                    ggml_cuda_should_use_mmq(src0->type, cc, ne12, /*n_experts =*/ ne02);
++                if (ne2 <= mmvq_mmid_max && !prefer_mmq) {
+                     ggml_cuda_mul_mat_vec_q(ctx, src0, src1, ids, dst);
+                     return;
+                 }

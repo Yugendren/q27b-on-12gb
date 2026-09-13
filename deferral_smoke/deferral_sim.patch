@@ -1,0 +1,316 @@
+--- a/src/models/qwen35moe.cpp
++++ b/src/models/qwen35moe.cpp
+@@ -1,6 +1,87 @@
+ #include "models.h"
+ #include "llama-memory-recurrent.h"
+ 
++#include <algorithm>
++#include <cstdlib>
++#include <vector>
++
++// ===========================================================================
++// Expert-deferral simulation  (Mericanii experiment 4.1-smoke)
++// ===========================================================================
++//
++// PURPOSE
++//   The planned optimisation is to let the CPU-resident routed experts of the
++//   first k blocks run *concurrently* with GPU work by allowing their output to
++//   join the residual stream d blocks late. That build is expensive; the cheap
++//   killable risk is QUALITY. This code simulates ONLY the numerical effect of
++//   that staleness. There is NO scheduling change whatsoever: the graph is
++//   still built and executed strictly serially, at exactly the same cost.
++//   Only the residual-join point of the routed-expert output moves.
++//
++// CONTROL (env vars, no CLI plumbing)
++//   LLAMA_DEFER_DEPTH  = d   0 = off (default, bit-identical to stock), 1..3
++//   LLAMA_DEFER_LAYERS = k   defer only blocks 0..k-1. Default 16, matching the
++//                            production `--n-cpu-moe 16`. Clamped to n_layer.
++//
++// SEMANTICS
++//   For block i < k:
++//     * the routed-expert output moe_out(i) is computed, as always, from
++//       block i's OWN post-attention-normed hidden state. This is essential for
++//       faithfulness: a real overlapped implementation dispatches the CPU work
++//       the moment block i's normed hidden state exists, so the expert INPUT is
++//       never stale -- only the join of its OUTPUT is late.
++//     * moe_out(i) is NOT added into block i's residual.
++//     * moe_out(i) is instead added into the residual stream at the TOP of
++//       block i+d+1 -- equivalently, at the END of block i+d instead of the end
++//       of block i. So it is ABSENT from the input of blocks i+1 .. i+d, and
++//       PRESENT from block i+d+1 onward. Exactly d blocks run stale, which is
++//       exactly d full blocks of GPU work a real scheduler can overlap the CPU
++//       expert compute with.
++//
++//       THE +1 IS NOT AN OFF-BY-ONE, IT IS THE POINT. Joining at the top of
++//       block i+d (without the +1) would be a no-op at d=1: block i's own
++//       contribution is normally added at the end of block i, and nothing but
++//       the (identity, absent control vectors) build_cvec sits between there and
++//       the top of block i+1. Verified empirically -- that wiring produced
++//       bit-identical logits to stock at d=1. See NOTES.md section 2.
++//     * the gated SHARED expert is unaffected and joins immediately. This is
++//       correct: `--n-cpu-moe N` only overrides tensors matching
++//       "\\.ffn_(up|down|gate|gate_up)_(ch|)exps", which does not match
++//       "ffn_*_shexp" nor "ffn_gate_inp", so the shared expert and the router
++//       both stay GPU-resident in production.
++//
++// CONSERVATION
++//   Every contribution is delivered exactly once. Contributions whose target
++//   index i+d+1 lands on a non-deferring block (i.e. >= k) are still joined at
++//   that block's top. Contributions whose target index runs past the end of the
++//   stack are accumulated in the tail slot and flushed into the stream BEFORE
++//   output_norm, so both the LM head and the MTP/NextN seed (res->t_h_nextn,
++//   consumed by blk.40) observe a fully-flushed residual stream. A debug assert
++//   verifies that no pending contribution is left over.
++// ===========================================================================
++
++// Read the two knobs straight out of the environment, into plain ints, at the point of
++// use. No struct, no function-local static, no lambda.
++//
++// This is deliberately the dumbest possible implementation. An earlier version cached
++// the config in `static const llama_defer_cfg cfg = []{...}();`. That worked under
++// clang/macOS but on the Linux/GCC-13 box build the initialiser provably never ran
++// (instrumented: the calling code executed, the lambda body did not), so the config sat
++// at its defaults and deferral was silently OFF while the harness believed it was ON --
++// four "measurements" that would all have been the d=0 baseline. Never cache the thing
++// whose absence is indistinguishable from a valid result.
++static void llama_defer_read_env(int & depth, int & layers) {
++    const char * s_depth  = getenv("LLAMA_DEFER_DEPTH");
++    const char * s_layers = getenv("LLAMA_DEFER_LAYERS");
++
++    depth  = s_depth  ? atoi(s_depth)  : 0;
++    layers = s_layers ? atoi(s_layers) : 16;
++
++    if (depth  < 0) { depth  = 0; }
++    if (layers < 0) { layers = 0; }
++    if (depth == 0 || layers == 0) { depth = 0; layers = 0; }
++}
++
+ void llama_model_qwen35moe::load_arch_hparams(llama_model_loader & ml) {
+     ml.get_key(LLM_KV_EXPERT_FEED_FORWARD_LENGTH,        hparams.n_ff_exp, false);
+     ml.get_key(LLM_KV_EXPERT_SHARED_FEED_FORWARD_LENGTH, hparams.n_ff_shexp, false);
+@@ -178,8 +259,86 @@
+     ggml_tensor * inp_pos     = build_inp_pos();
+     ggml_tensor * inp_out_ids = build_inp_out_ids();
+ 
++    // --- expert-deferral simulation state (no-op unless LLAMA_DEFER_DEPTH > 0) ---
++    int defer_depth  = 0;
++    int defer_layers = 0;
++    llama_defer_read_env(defer_depth, defer_layers);
++    if (defer_layers > (int) n_layer) { defer_layers = (int) n_layer; }
++
++    // Unconditional whenever the knob is present at all, so a run can never quietly
++    // believe deferral is on when it is off. Silent under normal operation (env unset).
++    if (getenv("LLAMA_DEFER_DEPTH") != nullptr) {
++        LLAMA_LOG_WARN("%s: LLAMA_DEFER_DEPTH env present -> defer_depth=%d defer_layers=%d\n",
++                __func__, defer_depth, defer_layers);
++    }
++
++    // defer_pending[j] accumulates the routed-expert contributions scheduled to
++    // join the residual stream at the TOP of block j. Slot [n_layer] is the tail
++    // slot: it collects everything whose target index runs past the last block
++    // and is flushed just before output_norm.
++    std::vector<ggml_tensor *> defer_pending((size_t) n_layer + 1, nullptr);
++
++    auto defer_push = [&](ggml_tensor * t, int target) {
++        const size_t slot = (size_t) std::min<int>(target, (int) n_layer);
++        defer_pending[slot] = defer_pending[slot] ? ggml_add(ctx0, defer_pending[slot], t) : t;
++    };
++
++    // Emit the full deferral schedule once, so a measurement run can be audited
++    // from the server log alone (every deferring block must appear exactly once).
++    if (defer_depth > 0) {
++        // `defer_schedule_logged` is a plain function-local static bool (zero-initialised
++        // at load time, no dynamic initialiser), so it does not suffer the static-init
++        // pathology described above -- but even if it failed we would only ever log too
++        // MUCH, never silently run with deferral off. The banner lives here, in the same
++        // proven-reachable block as the schedule, so "log present" == "deferral active".
++        static bool defer_schedule_logged = false;
++        if (!defer_schedule_logged) {
++            defer_schedule_logged = true;
++            LLAMA_LOG_WARN("%s: ***** EXPERT-DEFERRAL SIMULATION ACTIVE *****\n", __func__);
++            LLAMA_LOG_WARN("%s:   LLAMA_DEFER_DEPTH=%d LLAMA_DEFER_LAYERS=%d\n",
++                    __func__, defer_depth, defer_layers);
++            LLAMA_LOG_WARN("%s:   routed-expert output of blocks 0..%d joins the residual %d block(s) late\n"
++                           "%s:   (block i's routed experts are absent from the input of blocks i+1..i+%d)\n",
++                    __func__, defer_layers - 1, defer_depth, __func__, defer_depth);
++            LLAMA_LOG_WARN("%s:   shared expert unchanged; scheduling unchanged; quality-probe only\n", __func__);
++            LLAMA_LOG_WARN("%s: expert-deferral schedule (n_layer=%d, depth=%d, layers=%d):\n",
++                    __func__, (int) n_layer, defer_depth, defer_layers);
++            for (int i = 0; i < defer_layers; ++i) {
++                const int tgt  = i + defer_depth + 1;
++                const int last = std::min<int>(i + defer_depth, (int) n_layer - 1);
++                char where[80];
++                char stale[64];
++                if (tgt < (int) n_layer) {
++                    snprintf(where, sizeof(where), "top of blk %d", tgt);
++                } else {
++                    snprintf(where, sizeof(where), "tail flush (pre output_norm)");
++                }
++                if (i + 1 > last) {
++                    // deferred past the last block: no block runs without it
++                    snprintf(stale, sizeof(stale), "no blk runs stale");
++                } else if (i + 1 == last) {
++                    snprintf(stale, sizeof(stale), "blk %d runs stale", last);
++                } else {
++                    snprintf(stale, sizeof(stale), "blk %d..%d run stale", i + 1, last);
++                }
++                LLAMA_LOG_WARN("%s:   blk %2d routed-expert out -> %-28s (%s)\n",
++                        __func__, i, where, stale);
++            }
++        }
++    }
++
+     // MTP/NextN layers are loaded as extra decoder blocks but not executed in the main pass.
+     for (int il = 0; il < n_layer; ++il) {
++        // Deferral join point: contributions produced by earlier blocks land here,
++        // i.e. after block il-1 finished contributing and before block il's
++        // attn_norm reads the stream. t_layer_inp is set *after* the join so that
++        // layer-input extraction still reports the true input to this block.
++        if (defer_pending[(size_t) il]) {
++            inpL = ggml_add(ctx0, inpL, defer_pending[(size_t) il]);
++            cb(inpL, "defer_join", il);
++            defer_pending[(size_t) il] = nullptr;
++        }
++
+         res->t_layer_inp[il] = inpL;
+ 
+         ggml_tensor * inpSA = inpL;
+@@ -201,6 +360,16 @@
+         if (il == n_layer - 1 && inp_out_ids && cparams.embeddings_nextn_masked) {
+             cur   = ggml_get_rows(ctx0, cur, inp_out_ids);
+             inpSA = ggml_get_rows(ctx0, inpSA, inp_out_ids);
++
++            // The stream is row-reduced from here on, so anything still pending
++            // must be reduced too or the tail flush would mismatch shapes. Only
++            // the tail slot can be non-empty at this point: every slot <= il was
++            // consumed at the top of its own block. Contributions produced later
++            // in this same block are already reduced, because they derive from
++            // the reduced `cur`.
++            if (defer_pending[(size_t) n_layer]) {
++                defer_pending[(size_t) n_layer] = ggml_get_rows(ctx0, defer_pending[(size_t) n_layer], inp_out_ids);
++            }
+         }
+ 
+         // Residual connection
+@@ -215,11 +384,30 @@
+         cb(attn_post_norm, "attn_post_norm", il);
+ 
+         // MOE FFN layer
+-        cur = build_layer_ffn(attn_post_norm, il);
+-        cb(cur, "ffn_out", il);
++        // NOTE (deferral sim): the routed experts are ALWAYS fed `attn_post_norm`,
++        // i.e. this block's own normed hidden state. Only the join of their output
++        // is delayed. This mirrors a real overlapped implementation, which hands
++        // the CPU the pre-deferral activation the moment it exists.
++        const bool defer_this = (defer_depth > 0) && (il < defer_layers);
+ 
++        ggml_tensor * moe_deferred = nullptr;
++
++        cur = build_layer_ffn(attn_post_norm, il, defer_this ? &moe_deferred : nullptr);
++        if (cur) {
++            cb(cur, "ffn_out", il);
++        }
++
++        if (moe_deferred) {
++            // +1: join at the top of block il+d+1 == the END of block il+d. Blocks
++            // il+1 .. il+d run without this contribution -- d blocks of overlap.
++            // Without the +1, d=1 would be a numerical no-op (see header comment).
++            defer_push(moe_deferred, il + defer_depth + 1);
++        }
++
+         // Residual connection for FFN - add to the tensor from before post_attention_layernorm
+-        cur = ggml_add(ctx0, cur, ffn_residual);
++        // (`cur` is null only if this block deferred everything it had, which cannot
++        //  happen while a shared expert is present -- guarded for safety.)
++        cur = cur ? ggml_add(ctx0, cur, ffn_residual) : ffn_residual;
+         cb(cur, "post_moe", il);
+ 
+         cur = build_cvec(cur, il);
+@@ -230,6 +418,25 @@
+     }
+     cur = inpL;
+ 
++    // Deferral tail flush: contributions whose target index ran past the end of
++    // the stack join here. This happens strictly BEFORE output_norm, so the LM
++    // head *and* res->t_h_nextn (the seed consumed by the blk.40 MTP head) both
++    // see a fully-flushed residual stream. Nothing is ever dropped: the sum of
++    // all contributions is preserved exactly, only their timing moves.
++    if (defer_pending[(size_t) n_layer]) {
++        cur = ggml_add(ctx0, cur, defer_pending[(size_t) n_layer]);
++        cb(cur, "defer_flush_tail", -1);
++        defer_pending[(size_t) n_layer] = nullptr;
++    }
++
++    // Conservation guard. Deliberately NOT under NDEBUG: the measurement build is
++    // Release, and a dropped contribution would not crash -- it would silently
++    // corrupt the quality number this whole experiment exists to produce. The cost
++    // is a <=41-iteration pointer scan per graph build, which is unmeasurable.
++    for (size_t s = 0; s < defer_pending.size(); ++s) {
++        GGML_ASSERT(defer_pending[s] == nullptr && "expert-deferral: dropped a pending contribution");
++    }
++
+     // post-norm hidden state feeds both the LM head and the MTP seed below
+     cur = build_norm(cur, model.output_norm, nullptr, LLM_NORM_RMS, -1);
+ 
+@@ -494,7 +701,7 @@
+     return cur;
+ }
+ 
+-ggml_tensor * llama_model_qwen35moe::graph::build_layer_ffn(ggml_tensor * cur, const int il) {
++ggml_tensor * llama_model_qwen35moe::graph::build_layer_ffn(ggml_tensor * cur, const int il, ggml_tensor ** moe_out_defer) {
+     // Check if this is an MoE layer
+     GGML_ASSERT(model.layers[il].ffn_gate_inp != nullptr);
+ 
+@@ -514,6 +721,18 @@
+             model.layers[il].ffn_gate_exps_s,
+             model.layers[il].ffn_down_exps_s);
+     cb(moe_out, "ffn_moe_out", il);
++
++    // Expert-deferral simulation: hand the ROUTED-expert output back to the caller
++    // instead of folding it into this block's immediate contribution. The tensor is
++    // already fully computed from this block's own `cur` (post-attention-normed
++    // hidden state) -- only its residual join is delayed. The shared expert below
++    // is untouched and still joins immediately, matching production placement where
++    // `--n-cpu-moe` leaves ffn_*_shexp and ffn_gate_inp on the GPU.
++    if (moe_out_defer != nullptr) {
++        *moe_out_defer = moe_out;
++        cb(moe_out, "ffn_moe_out_deferred", il);
++        moe_out = nullptr;
++    }
+ 
+     // Add shared experts if present - following Qwen3Next reference implementation
+     if (model.layers[il].ffn_up_shexp != nullptr) {
+@@ -541,9 +760,11 @@
+         ffn_shexp = ggml_mul(ctx0, ffn_shexp, shared_gate);
+         cb(ffn_shexp, "ffn_shexp_gated", il);
+ 
+-        cur = ggml_add(ctx0, moe_out, ffn_shexp);
++        cur = moe_out ? ggml_add(ctx0, moe_out, ffn_shexp) : ffn_shexp;
+         cb(cur, "ffn_out", il);
+     } else {
++        // may be nullptr when the routed experts were deferred and there is no
++        // shared expert; the caller treats that as "no immediate contribution".
+         cur = moe_out;
+     }
+ 
+--- a/src/models/models.h
++++ b/src/models/models.h
+@@ -2400,9 +2400,17 @@
+                     ggml_tensor * cur,
+                             int   il);
+ 
++        // Expert-deferral simulation (experiment 4.1-smoke): when `moe_out_defer` is
++        // non-null, the ROUTED-expert output is written through it and is *excluded*
++        // from the returned (immediate) FFN contribution, so the caller can join it
++        // into the residual stream a few blocks later. The gated shared expert always
++        // stays in the immediate return value. Returns nullptr if, after deferral,
++        // the block has no immediate FFN contribution at all.
++        // See the header comment in src/models/qwen35moe.cpp for exact semantics.
+         ggml_tensor * build_layer_ffn(
+                     ggml_tensor * cur,
+-                            int   il);
++                            int   il,
++                   ggml_tensor ** moe_out_defer = nullptr);
+ 
+         ggml_tensor * build_norm_gated(
+                     ggml_tensor * input,

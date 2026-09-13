@@ -1,0 +1,147 @@
+{
+ "old_save": {
+  "id_slot": 0,
+  "filename": "t5_old.bin",
+  "n_saved": 3982,
+  "n_written": 417970632,
+  "timings": {
+   "save_ms": 198.216
+  },
+  "_file_bytes": 417970632,
+  "_wall_s": 0.199
+ },
+ "patched_reads_old": {
+  "id_slot": 0,
+  "filename": "t5_old.bin",
+  "n_restored": 3982,
+  "n_read": 417970632,
+  "timings": {
+   "restore_ms": 69.953
+  },
+  "_file_bytes": 417970632,
+  "_wall_s": 0.071
+ },
+ "patched_reads_old_ok": true,
+ "trunc_save": {
+  "id_slot": 0,
+  "filename": "t5_trunc.bin",
+  "n_saved": 3982,
+  "n_written": 731759452,
+  "timings": {
+   "save_ms": 322.861
+  },
+  "_file_bytes": 731759452,
+  "_wall_s": 0.324
+ },
+ "trunc_restore": {
+  "id_slot": 0,
+  "filename": "t5_trunc.bin",
+  "n_restored": 3982,
+  "n_read": 417970632,
+  "timings": {
+   "restore_ms": 195.714
+  },
+  "_file_bytes": 731758452,
+  "_wall_s": 0.196
+ },
+ "trunc_restore_ok": true,
+ "multiturn": [
+  {
+   "cache_n": 7999,
+   "prompt_n": 18,
+   "prompt_ms": 247.03,
+   "predicted_n": 24,
+   "predicted_ms": 1170.972,
+   "predicted_per_second": 19.6418018535029,
+   "wall_s": 1.428
+  },
+  {
+   "cache_n": 8040,
+   "prompt_n": 20,
+   "prompt_ms": 248.015,
+   "predicted_n": 24,
+   "predicted_ms": 1166.667,
+   "predicted_per_second": 19.714280081634264,
+   "wall_s": 1.424
+  },
+  {
+   "cache_n": 8083,
+   "prompt_n": 20,
+   "prompt_ms": 248.009,
+   "predicted_n": 24,
+   "predicted_ms": 1166.306,
+   "predicted_per_second": 19.720382129561195,
+   "wall_s": 1.424
+  },
+  {
+   "cache_n": 8126,
+   "prompt_n": 20,
+   "prompt_ms": 246.914,
+   "predicted_n": 24,
+   "predicted_ms": 1167.666,
+   "predicted_per_second": 19.697413472688254,
+   "wall_s": 1.425
+  },
+  {
+   "cache_n": 8169,
+   "prompt_n": 20,
+   "prompt_ms": 250.495,
+   "predicted_n": 24,
+   "predicted_ms": 1174.499,
+   "predicted_per_second": 19.582817865319598,
+   "wall_s": 1.435
+  },
+  {
+   "cache_n": 8212,
+   "prompt_n": 20,
+   "prompt_ms": 250.503,
+   "predicted_n": 24,
+   "predicted_ms": 1168.358,
+   "predicted_per_second": 19.685747005626702,
+   "wall_s": 1.429
+  },
+  {
+   "cache_n": 8255,
+   "prompt_n": 20,
+   "prompt_ms": 250.787,
+   "predicted_n": 24,
+   "predicted_ms": 1168.879,
+   "predicted_per_second": 19.676972552334334,
+   "wall_s": 1.43
+  },
+  {
+   "cache_n": 8298,
+   "prompt_n": 20,
+   "prompt_ms": 250.097,
+   "predicted_n": 24,
+   "predicted_ms": 1169.299,
+   "predicted_per_second": 19.66990478910869,
+   "wall_s": 1.43
+  },
+  {
+   "cache_n": 8341,
+   "prompt_n": 19,
+   "prompt_ms": 251.093,
+   "predicted_n": 24,
+   "predicted_ms": 1170.29,
+   "predicted_per_second": 19.653248340155006,
+   "wall_s": 1.431
+  },
+  {
+   "cache_n": 8383,
+   "prompt_n": 20,
+   "prompt_ms": 252.95,
+   "predicted_n": 24,
+   "predicted_ms": 1168.832,
+   "predicted_per_second": 19.677763784701305,
+   "wall_s": 1.432
+  }
+ ],
+ "multiturn_cache_n_monotonic": true,
+ "log_truncated_appendix": [
+  "0.12.449.147 W srv  load_slot_ch: truncated context checkpoint appendix in '/data/scratch/slots/t5_trunc.bin' - ignored"
+ ],
+ "log_restored_ckpt": [
+  "restored 2 context checkpoint(s) from '/data/scratch/slots/t5_mt.bin'"
+ ]
+}

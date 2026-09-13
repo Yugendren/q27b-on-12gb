@@ -1,0 +1,37 @@
+{
+  "tag": "Q4_K_XL_ncm26_nospec_3060_n1",
+  "n_tasks": 164,
+  "max_attempts": 1,
+  "pass_at_N": {
+    "1": {
+      "passed": 151,
+      "rate": 0.9207317073170732,
+      "ci95": [
+        0.8691122258339313,
+        0.9530922579070382
+      ]
+    }
+  },
+  "mean_attempts_to_pass_among_solved": 1.0,
+  "mean_attempts_all_tasks": 1.0,
+  "mean_completion_tokens_per_task": 269.6646341463415,
+  "total_completion_tokens": 44225,
+  "tokens_per_additional_solve": null,
+  "wall_time_s": 1427.62,
+  "endpoint": "http://127.0.0.1:18095",
+  "model_id": "/data/models/coding/q36_35ba3b/Qwen3.6-35B-A3B-UD-Q4_K_XL.gguf",
+  "timestamp": "2026-09-03T09:26:43.916745+00:00",
+  "params": {
+    "endpoint": "http://127.0.0.1:18095",
+    "out": "/data/projects/q27b_on_12gb/results/cert35b/reliability_Q4_K_XL_ncm26_nospec_3060.jsonl",
+    "summary": "/data/projects/q27b_on_12gb/results/cert35b/reliability_Q4_K_XL_ncm26_nospec_3060_n1.json",
+    "max_attempts": 1,
+    "limit": 164,
+    "data_dir": "/data/projects/q27b_on_12gb/platform_arm/harness/data",
+    "max_tokens": 1024,
+    "temp_retry": 0.8,
+    "top_p": 0.95,
+    "concurrency": 1,
+    "tag": "Q4_K_XL_ncm26_nospec_3060_n1"
+  }
+}

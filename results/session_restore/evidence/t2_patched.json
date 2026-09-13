@@ -1,0 +1,82 @@
+{
+ "label": "t2_patched",
+ "bin": "/data/scratch/bin-patched/llama-server",
+ "cmd": [
+  "/data/scratch/bin-patched/llama-server",
+  "-m",
+  "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+  "--host",
+  "127.0.0.1",
+  "--port",
+  "8090",
+  "-c",
+  "16384",
+  "-ngl",
+  "99",
+  "--jinja",
+  "-np",
+  "1",
+  "--slot-save-path",
+  "/data/scratch/slots",
+  "--cache-ram",
+  "0",
+  "--ctx-checkpoints",
+  "8",
+  "--checkpoint-min-step",
+  "2048",
+  "--slot-prompt-similarity",
+  "0.1",
+  "-lv",
+  "4"
+ ],
+ "prompt_tokens": 7999,
+ "cold": {
+  "cache_n": 0,
+  "prompt_n": 8023,
+  "prompt_ms": 15766.83,
+  "predicted_n": 16,
+  "predicted_ms": 767.299,
+  "predicted_per_second": 19.549093638855258,
+  "wall_s": 16.544
+ },
+ "cold_content": "\n\n**Answer:**\nYes, Rule 5 comes before Rule 9.",
+ "save": {
+  "id_slot": 0,
+  "filename": "t.bin",
+  "n_saved": 8038,
+  "n_written": 997687036,
+  "timings": {
+   "save_ms": 1125.562
+  },
+  "_file_bytes": 997687036,
+  "_wall_s": 1.126
+ },
+ "restore": {
+  "id_slot": 0,
+  "filename": "t.bin",
+  "n_restored": 8038,
+  "n_read": 997687036,
+  "timings": {
+   "restore_ms": 276.976
+  },
+  "_file_bytes": 997687036,
+  "_wall_s": 0.278
+ },
+ "after_restore": {
+  "cache_n": 8019,
+  "prompt_n": 4,
+  "prompt_ms": 156.797,
+  "predicted_n": 16,
+  "predicted_ms": 759.06,
+  "predicted_per_second": 19.761283692988698,
+  "wall_s": 0.928
+ },
+ "after_content": "\n\n**Answer:**\nYes, Rule 5 comes before Rule 9.",
+ "log_forcing_full_reprocess": 0,
+ "log_appended_ckpt": [
+  "appended 2 context checkpoint(s) (299.252 MiB) to '/data/scratch/slots/t.bin'"
+ ],
+ "log_restored_ckpt": [
+  "restored 2 context checkpoint(s) from '/data/scratch/slots/t.bin'"
+ ]
+}

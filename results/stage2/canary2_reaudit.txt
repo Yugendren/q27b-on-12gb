@@ -1,0 +1,40 @@
+{
+  "n_probes": 54,
+  "pruned": {
+    "exact_match": 38,
+    "divergence_points": 30.8,
+    "token_flip_rate": 0.3198,
+    "canary_score": 0.6842424242424242
+  },
+  "flagship": {
+    "exact_match": 40,
+    "divergence_points": 28.8,
+    "token_flip_rate": 0.3168,
+    "canary_score": 0.6842424242424242
+  },
+  "paired_mcnemar": {
+    "both": 38,
+    "flagship_only_b": 2,
+    "pruned_only_c": 0,
+    "p": 0.5
+  },
+  "probes_where_they_differ": [
+    "c2-06",
+    "c3-06"
+  ],
+  "response_identical_rate": 0.7778,
+  "reproducibility": {
+    "pruned": {
+      "n": 54,
+      "identical_response_text": 54,
+      "identical_match_verdict": 54,
+      "bit_reproducible": true
+    },
+    "flagship": {
+      "n": 54,
+      "identical_response_text": 54,
+      "identical_match_verdict": 54,
+      "bit_reproducible": true
+    }
+  }
+}

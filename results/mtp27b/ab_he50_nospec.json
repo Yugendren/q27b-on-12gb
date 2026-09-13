@@ -1,0 +1,37 @@
+{
+  "tag": "he50_nospec",
+  "n_tasks": 50,
+  "max_attempts": 1,
+  "pass_at_N": {
+    "1": {
+      "passed": 48,
+      "rate": 0.96,
+      "ci95": [
+        0.8653990931249298,
+        0.9889611156723801
+      ]
+    }
+  },
+  "mean_attempts_to_pass_among_solved": 1.0,
+  "mean_attempts_all_tasks": 1.0,
+  "mean_completion_tokens_per_task": 165.72,
+  "total_completion_tokens": 8286,
+  "tokens_per_additional_solve": null,
+  "wall_time_s": 446.49,
+  "endpoint": "http://127.0.0.1:18098",
+  "model_id": "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+  "timestamp": "2026-09-03T12:10:08.553290+00:00",
+  "params": {
+    "endpoint": "http://127.0.0.1:18098",
+    "out": "/data/projects/q27b_on_12gb/results/mtp27b/ab_he50_nospec.jsonl",
+    "summary": "/data/projects/q27b_on_12gb/results/mtp27b/ab_he50_nospec.json",
+    "max_attempts": 1,
+    "limit": 50,
+    "data_dir": "/data/projects/q27b_on_12gb/platform_arm/harness/data",
+    "max_tokens": 1024,
+    "temp_retry": 0.8,
+    "top_p": 0.95,
+    "concurrency": 1,
+    "tag": "he50_nospec"
+  }
+}

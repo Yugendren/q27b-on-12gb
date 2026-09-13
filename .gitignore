@@ -1,0 +1,10 @@
+models/
+*.gguf
+results/**/*.log
+*.log
+deferral_smoke/llamacpp-v11/
+deferral_smoke/build-cpu/
+deferral_smoke/build-cpu-stock/
+__pycache__/
+.DS_Store
+.venv/

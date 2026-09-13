@@ -1,0 +1,19 @@
+
+probe              n_a   n_b   f16_nospec     f16_mtp2  identical
+code_btree         512   512 5a699fb9c896 0606e3633d00  False
+    first divergence at char 598:
+      f16_nospec: ...'Optional,\n    Tuple,\n    Type,\n    TypeVar,\n    Union,\n)\n\n# Type aliases\nKey = TypeVar("Key")\nValue = TypeVar("Value")\n\n'
+      f16_mtp2: ...'Optional,\n    Tuple,\n    Type,\n    TypeVar,\n    Union,\n)\n\n# ------------------------------------------------------------'
+code_lsm           512   512 5d8e2cc0c38b 873cc07ba0de  False
+    first divergence at char 641:
+      f16_nospec: ...'d\nfrom typing import (\n    Any,\n    Callable,\n    Dict,\n    Generic,\n    List,\n    Optional,\n    Tuple,\n    TypeVar,\n   '
+      f16_mtp2: ...'d\nfrom typing import (\n    Any,\n    Callable,\n    Dict,\n    List,\n    Optional,\n    Tuple,\n    TypeVar,\n    Union,\n)\n\n# '
+struct_json        512   512 5f937e7b5a12 5f937e7b5a12  True
+prose_ssd          512   512 3d465bb70d8b de57e9f58cb0  False
+    first divergence at char 96:
+      f16_nospec: ...'calates as the drive fills primarily due to the fundamental constraint that NAND flash memory can only be erased in larg'
+      f16_mtp2: ...'calates as the drive fills primarily due to the fundamental mismatch between the logical block size used by the host (ty'
+humaneval_like     201   201 167ec633159f 167ec633159f  True
+
+IDENTICAL 2/5 probes
+VERDICT: *** MTP DIVERGES FROM NO-SPEC — do not ship MTP on quality claims ***

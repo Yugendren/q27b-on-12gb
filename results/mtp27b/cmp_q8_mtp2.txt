@@ -1,0 +1,22 @@
+
+probe              n_a   n_b  q8_nospec_A      q8_mtp2  identical
+code_btree         512   512 1eea2723edd5 cb556e8f4e06  False
+    first divergence at char 761:
+      q8_nospec_A: ...'\n# each node can have at most m-1 keys and m children.\n# We choose m=16, so max keys = 15, max children = 16.\nMAX_KEYS: '
+      q8_mtp2: ...'\n# each node can have at most m-1 keys and m children.\n# We use order 4, so max keys = 3, max children = 4.\nORDER: int ='
+code_lsm           512   512 7d171c92458b 7a78f1969c33  False
+    first divergence at char 60:
+      q8_nospec_A: ...'```python\n"""\nA disk-backed Log-Structured Merge (LSM) tree memtable implementation.\n\nThis module provides:\n- A skip lis'
+      q8_mtp2: ...'```python\n"""\nA disk-backed Log-Structured Merge (LSM) tree implementation featuring:\n- An in-memory memtable backed by '
+struct_json        512   512 5f937e7b5a12 c6a3470d3c5b  False
+    first divergence at char 1014:
+      q8_nospec_A: ...' "digest": "sha256:mno123pqr456",\n          "size_bytes": 21000000,\n          "pushed_at": "2023-10-27T07:45:00Z"\n      '
+      q8_mtp2: ...' "digest": "sha256:mno123pqr456",\n          "size_bytes": 21495808,\n          "pushed_at": "2023-10-27T07:45:00Z"\n      '
+prose_ssd          512   512 400becaa47e4 73dc2950ffd0  False
+    first divergence at char 96:
+      q8_nospec_A: ...'calates as the drive fills primarily due to the fundamental constraint that NAND flash memory can only be erased in larg'
+      q8_mtp2: ...'calates as the drive fills primarily due to the fundamental mismatch between the logical block size used by the host (ty'
+humaneval_like     201   201 167ec633159f 167ec633159f  True
+
+IDENTICAL 1/5 probes
+VERDICT: *** MTP DIVERGES FROM NO-SPEC — do not ship MTP on quality claims ***

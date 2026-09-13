@@ -1,0 +1,37 @@
+{
+  "tag": "IQ2_XXS_nospec_3060_n1",
+  "n_tasks": 164,
+  "max_attempts": 1,
+  "pass_at_N": {
+    "1": {
+      "passed": 128,
+      "rate": 0.7804878048780488,
+      "ci95": [
+        0.7111202752298119,
+        0.8370160472641677
+      ]
+    }
+  },
+  "mean_attempts_to_pass_among_solved": 1.0,
+  "mean_attempts_all_tasks": 1.0,
+  "mean_completion_tokens_per_task": 236.0487804878049,
+  "total_completion_tokens": 38712,
+  "tokens_per_additional_solve": null,
+  "wall_time_s": 1858.07,
+  "endpoint": "http://127.0.0.1:18099",
+  "model_id": "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf",
+  "timestamp": "2026-09-02T04:01:24.753130+00:00",
+  "params": {
+    "endpoint": "http://127.0.0.1:18099",
+    "out": "/data/projects/q27b_on_12gb/results/platform_arm/reliability_IQ2_XXS_nospec_3060.jsonl",
+    "summary": "/data/projects/q27b_on_12gb/results/platform_arm/reliability_IQ2_XXS_nospec_3060_n1.json",
+    "max_attempts": 1,
+    "limit": 164,
+    "data_dir": "/data/projects/q27b_on_12gb/platform_arm/harness/data",
+    "max_tokens": 1024,
+    "temp_retry": 0.8,
+    "top_p": 0.95,
+    "concurrency": 1,
+    "tag": "IQ2_XXS_nospec_3060_n1"
+  }
+}

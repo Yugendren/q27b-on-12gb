@@ -1,0 +1,8 @@
+# Smoke-test matrix: single small model, used to validate the pipeline
+# end-to-end (see harness/README.md). Not part of the frozen M0 baseline
+# matrix.
+
+- name: qwen3-0.6b-q4_k_m-smoke
+  gguf_path: models/Qwen3-0.6B-Q4_K_M.gguf
+  server_flags: "--jinja -c 4096 -ngl 999"
+  bench_flags: "-ngl 999"

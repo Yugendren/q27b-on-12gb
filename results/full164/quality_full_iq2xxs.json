@@ -1,0 +1,1070 @@
+{
+  "endpoint": "http://127.0.0.1:18081",
+  "model_info": {
+    "raw": {
+      "models": [
+        {
+          "name": "models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf",
+          "model": "models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf",
+          "aliases": [
+            "models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf"
+          ],
+          "tags": [],
+          "object": "model",
+          "created": 1787835649,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 248320,
+            "n_ctx": 8192,
+            "n_ctx_train": 262144,
+            "n_embd": 5120,
+            "n_params": 26895998464,
+            "size": 7255074816,
+            "ftype": "IQ2_XXS - 2.0625 bpw"
+          }
+        }
+      ]
+    },
+    "model_id": "models/unsloth-q27b/Qwen3.8-27B-UD-IQ2_XXS.gguf"
+  },
+  "gsm8k": {
+    "n": 1,
+    "correct": 1,
+    "score": 1.0,
+    "results": [
+      {
+        "index": 0,
+        "reference": "18",
+        "predicted": "18",
+        "correct": true,
+        "error": null
+      }
+    ]
+  },
+  "humaneval": {
+    "n": 164,
+    "passed": 81,
+    "score": 0.49390243902439024,
+    "results": [
+      {
+        "index": 0,
+        "task_id": "HumanEval/0",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_gzf9uxzx.py\", line 1, in <module>\n    def has_close_elements(numbers: List[float], threshold: float) -> bool:\n                                    ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 1,
+        "task_id": "HumanEval/1",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ciyw4e9y.py\", line 1, in <module>\n    def separate_paren_groups(paren_string: str) -> List[str]:\n                                                    ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 2,
+        "task_id": "HumanEval/2",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 3,
+        "task_id": "HumanEval/3",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_rzbhcagm.py\", line 1, in <module>\n    def below_zero(operations: List[int]) -> bool:\n                               ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 4,
+        "task_id": "HumanEval/4",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ww0yp0_k.py\", line 1, in <module>\n    def mean_absolute_deviation(numbers: List[float]) -> float:\n                                         ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 5,
+        "task_id": "HumanEval/5",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_smezpho1.py\", line 1, in <module>\n    def intersperse(numbers: List[int], delimeter: int) -> List[int]:\n                             ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 6,
+        "task_id": "HumanEval/6",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_z56q5l4x.py\", line 28, in <module>\n    check(parse_nested_parens)\n  File \"/tmp/humaneval_z56q5l4x.py\", line 23, in check\n    assert candidate('(()()) ((())) () ((())()())') == [2, 3, 1, 3]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 7,
+        "task_id": "HumanEval/7",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ksbv7s0k.py\", line 1, in <module>\n    def filter_by_substring(strings: List[str], substring: str) -> List[str]:\n                                     ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 8,
+        "task_id": "HumanEval/8",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_itvek84h.py\", line 1, in <module>\n    def sum_product(numbers: List[int]) -> Tuple[int, int]:\n                             ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 9,
+        "task_id": "HumanEval/9",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_a01ew9bg.py\", line 1, in <module>\n    def rolling_max(numbers: List[int]) -> List[int]:\n                             ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 10,
+        "task_id": "HumanEval/10",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_1pbrgn0x.py\", line 38, in <module>\n    check(make_palindrome)\n  File \"/tmp/humaneval_1pbrgn0x.py\", line 31, in check\n    assert candidate('') == ''\n           ^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 11,
+        "task_id": "HumanEval/11",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 12,
+        "task_id": "HumanEval/12",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_8h848b8g.py\", line 1, in <module>\n    def longest(strings: List[str]) -> Optional[str]:\n                         ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 13,
+        "task_id": "HumanEval/13",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 14,
+        "task_id": "HumanEval/14",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_x92nsv7i.py\", line 1, in <module>\n    def all_prefixes(string: str) -> List[str]:\n                                     ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 15,
+        "task_id": "HumanEval/15",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 16,
+        "task_id": "HumanEval/16",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 17,
+        "task_id": "HumanEval/17",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_rr8qzoqd.py\", line 1, in <module>\n    def parse_music(music_string: str) -> List[int]:\n                                          ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 18,
+        "task_id": "HumanEval/18",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 19,
+        "task_id": "HumanEval/19",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 20,
+        "task_id": "HumanEval/20",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval__1ezq6fe.py\", line 1, in <module>\n    def find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n                                       ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 21,
+        "task_id": "HumanEval/21",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_v11q2wid.py\", line 1, in <module>\n    def rescale_to_unit(numbers: List[float]) -> List[float]:\n                                 ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 22,
+        "task_id": "HumanEval/22",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_4qmh7llz.py\", line 1, in <module>\n    def filter_integers(values: List[Any]) -> List[int]:\n                                ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 23,
+        "task_id": "HumanEval/23",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 24,
+        "task_id": "HumanEval/24",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 25,
+        "task_id": "HumanEval/25",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_w77wdub3.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 26,
+        "task_id": "HumanEval/26",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_kgqsagdx.py\", line 1, in <module>\n    def remove_duplicates(numbers: List[int]) -> List[int]:\n                                   ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 27,
+        "task_id": "HumanEval/27",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 28,
+        "task_id": "HumanEval/28",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_5s3s6txc.py\", line 1, in <module>\n    def concatenate(strings: List[str]) -> str:\n                             ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 29,
+        "task_id": "HumanEval/29",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval__hru8zsj.py\", line 1, in <module>\n    def filter_by_prefix(strings: List[str], prefix: str) -> List[str]:\n                                  ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 30,
+        "task_id": "HumanEval/30",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 31,
+        "task_id": "HumanEval/31",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 32,
+        "task_id": "HumanEval/32",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_alyxgfre.py\", line 49, in <module>\n    check(find_zero)\n  File \"/tmp/humaneval_alyxgfre.py\", line 45, in check\n    assert math.fabs(poly(coeffs, solution)) < 1e-4\n                     ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/tmp/humaneval_alyxgfre.py\", line 9, in poly\n    return sum([coeff * math.pow(x, i) for i, coeff in enumerate(xs)])\n                        ^^^^^^^^^^^^^^\nTypeError: must be real number, not NoneType\n"
+      },
+      {
+        "index": 33,
+        "task_id": "HumanEval/33",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_k4dp_gbe.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 34,
+        "task_id": "HumanEval/34",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 35,
+        "task_id": "HumanEval/35",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 36,
+        "task_id": "HumanEval/36",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_kl5ao9fi.py\", line 31, in <module>\n    check(fizz_buzz)\n  File \"/tmp/humaneval_kl5ao9fi.py\", line 20, in check\n    assert candidate(50) == 0\n           ^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 37,
+        "task_id": "HumanEval/37",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 38,
+        "task_id": "HumanEval/38",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_jtpjqxe2.py\", line 29, in <module>\n    check(decode_cyclic)\n  File \"/tmp/humaneval_jtpjqxe2.py\", line 24, in check\n    encoded_str = encode_cyclic(str)\n                  ^^^^^^^^^^^^^\nNameError: name 'encode_cyclic' is not defined. Did you mean: 'decode_cyclic'?\n"
+      },
+      {
+        "index": 39,
+        "task_id": "HumanEval/39",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_lhn4t_k7.py\", line 38, in <module>\n    check(prime_fib)\n  File \"/tmp/humaneval_lhn4t_k7.py\", line 25, in check\n    assert candidate(1) == 2\n           ^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 40,
+        "task_id": "HumanEval/40",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_pr4_cnr1.py\", line 40, in <module>\n    check(triples_sum_to_zero)\n  File \"/tmp/humaneval_pr4_cnr1.py\", line 28, in check\n    assert candidate([1, 3, 5, 0]) == False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 41,
+        "task_id": "HumanEval/41",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_wo7qvlwu.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 42,
+        "task_id": "HumanEval/42",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 43,
+        "task_id": "HumanEval/43",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 44,
+        "task_id": "HumanEval/44",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 45,
+        "task_id": "HumanEval/45",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 46,
+        "task_id": "HumanEval/46",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_6nm3_5dx.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 47,
+        "task_id": "HumanEval/47",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_cf5p3bq7.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 48,
+        "task_id": "HumanEval/48",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 49,
+        "task_id": "HumanEval/49",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 50,
+        "task_id": "HumanEval/50",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_cmf4s664.py\", line 26, in <module>\n    check(decode_shift)\n  File \"/tmp/humaneval_cmf4s664.py\", line 21, in check\n    encoded_str = encode_shift(str)\n                  ^^^^^^^^^^^^\nNameError: name 'encode_shift' is not defined. Did you mean: 'decode_shift'?\n"
+      },
+      {
+        "index": 51,
+        "task_id": "HumanEval/51",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 52,
+        "task_id": "HumanEval/52",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 53,
+        "task_id": "HumanEval/53",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 54,
+        "task_id": "HumanEval/54",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 55,
+        "task_id": "HumanEval/55",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 56,
+        "task_id": "HumanEval/56",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 57,
+        "task_id": "HumanEval/57",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 58,
+        "task_id": "HumanEval/58",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 59,
+        "task_id": "HumanEval/59",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_rd75x9ln.py\", line 26, in <module>\n    check(largest_prime_factor)\n  File \"/tmp/humaneval_rd75x9ln.py\", line 18, in check\n    assert candidate(15) == 5\n           ^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 60,
+        "task_id": "HumanEval/60",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 61,
+        "task_id": "HumanEval/61",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 62,
+        "task_id": "HumanEval/62",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 63,
+        "task_id": "HumanEval/63",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ug5_hkwh.py\", line 35, in <module>\n    check(fibfib)\n  File \"/tmp/humaneval_ug5_hkwh.py\", line 25, in check\n    assert candidate(2) == 1\n           ^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 64,
+        "task_id": "HumanEval/64",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 65,
+        "task_id": "HumanEval/65",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 66,
+        "task_id": "HumanEval/66",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 67,
+        "task_id": "HumanEval/67",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 68,
+        "task_id": "HumanEval/68",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_hj4w9bis.py\", line 3\n    \"\"\"\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 33)\n"
+      },
+      {
+        "index": 69,
+        "task_id": "HumanEval/69",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_ih_42b8d.py\", line 3\n    '''\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 41)\n"
+      },
+      {
+        "index": 70,
+        "task_id": "HumanEval/70",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_n323ffyl.py\", line 33, in <module>\n    check(strange_sort_list)\n  File \"/tmp/humaneval_n323ffyl.py\", line 18, in check\n    assert candidate([1, 2, 3, 4]) == [1, 4, 2, 3]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 71,
+        "task_id": "HumanEval/71",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_qxalo2r_.py\", line 32, in <module>\n    check(triangle_area)\n  File \"/tmp/humaneval_qxalo2r_.py\", line 18, in check\n    assert candidate(3, 4, 5) == 6.00, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 72,
+        "task_id": "HumanEval/72",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 73,
+        "task_id": "HumanEval/73",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 74,
+        "task_id": "HumanEval/74",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 75,
+        "task_id": "HumanEval/75",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_oynzp6d9.py\", line 3\n    \"\"\"Write a function that returns true if the given number is the multiplication of 3 prime numbers\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 24)\n"
+      },
+      {
+        "index": 76,
+        "task_id": "HumanEval/76",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_m87hph3d.py\", line 34, in <module>\n    check(is_simple_power)\n  File \"/tmp/humaneval_m87hph3d.py\", line 19, in check\n    assert candidate(16, 2)== True, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 77,
+        "task_id": "HumanEval/77",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 78,
+        "task_id": "HumanEval/78",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 79,
+        "task_id": "HumanEval/79",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 80,
+        "task_id": "HumanEval/80",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 81,
+        "task_id": "HumanEval/81",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_9ijo_4og.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 82,
+        "task_id": "HumanEval/82",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 83,
+        "task_id": "HumanEval/83",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_14liyink.py\", line 24, in <module>\n    check(starts_one_ends)\n  File \"/tmp/humaneval_14liyink.py\", line 13, in check\n    assert candidate(1) == 1\n           ^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 84,
+        "task_id": "HumanEval/84",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 85,
+        "task_id": "HumanEval/85",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 86,
+        "task_id": "HumanEval/86",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_aa61s7g8.py\", line 32, in <module>\n    check(anti_shuffle)\n  File \"/tmp/humaneval_aa61s7g8.py\", line 20, in check\n    assert candidate('Hi') == 'Hi'\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 87,
+        "task_id": "HumanEval/87",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_ptyyi7i_.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 88,
+        "task_id": "HumanEval/88",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 89,
+        "task_id": "HumanEval/89",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_84zl4rv1.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 90,
+        "task_id": "HumanEval/90",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 91,
+        "task_id": "HumanEval/91",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 92,
+        "task_id": "HumanEval/92",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_l5lqpv6g.py\", line 40, in <module>\n    check(any_int)\n  File \"/tmp/humaneval_l5lqpv6g.py\", line 25, in check\n    assert candidate(2, 3, 1)==True, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 93,
+        "task_id": "HumanEval/93",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_od0t5sw2.py\", line 31, in <module>\n    check(encode)\n  File \"/tmp/humaneval_od0t5sw2.py\", line 21, in check\n    assert candidate('TEST') == 'tgst', \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 94,
+        "task_id": "HumanEval/94",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_l4se_i7o.py\", line 42, in <module>\n    check(skjkasdkd)\n  File \"/tmp/humaneval_l4se_i7o.py\", line 20, in check\n    assert candidate([0,3,2,1,3,5,7,4,5,5,5,2,181,32,4,32,3,2,32,324,4,3]) == 10, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 95,
+        "task_id": "HumanEval/95",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_mctlqxkf.py\", line 3\n    \"\"\"\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 29)\n"
+      },
+      {
+        "index": 96,
+        "task_id": "HumanEval/96",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 97,
+        "task_id": "HumanEval/97",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 98,
+        "task_id": "HumanEval/98",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 99,
+        "task_id": "HumanEval/99",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_rykcp85c.py\", line 35, in <module>\n    check(closest_integer)\n  File \"/tmp/humaneval_rykcp85c.py\", line 25, in check\n    assert candidate(\"10\") == 10, \"Test 1\"\n           ^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Test 1\n"
+      },
+      {
+        "index": 100,
+        "task_id": "HumanEval/100",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 101,
+        "task_id": "HumanEval/101",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_bk1_k0_7.py\", line 29, in <module>\n    check(words_string)\n  File \"/tmp/humaneval_bk1_k0_7.py\", line 17, in check\n    assert candidate(\"Hi, my name is John\") == [\"Hi\", \"my\", \"name\", \"is\", \"John\"]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 102,
+        "task_id": "HumanEval/102",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 103,
+        "task_id": "HumanEval/103",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_8iywn76l.py\", line 3\n    \"\"\"You are given two positive integers n and m, and your task is to compute the\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 28)\n"
+      },
+      {
+        "index": 104,
+        "task_id": "HumanEval/104",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 105,
+        "task_id": "HumanEval/105",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_rd9sfnz8.py\", line 24\n    names = {1: \"One\", 2: \"Two\", 3: \"Three\", 4: \"Four\", 5: \"Five\", 6: \"Six\", 7: \"Seven\n                                                                                ^\nSyntaxError: unterminated string literal (detected at line 24)\n"
+      },
+      {
+        "index": 106,
+        "task_id": "HumanEval/106",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 107,
+        "task_id": "HumanEval/107",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_zuhctzab.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 108,
+        "task_id": "HumanEval/108",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_iacqf19o.py\", line 31, in <module>\n    check(count_nums)\n  File \"/tmp/humaneval_iacqf19o.py\", line 17, in check\n    assert candidate([]) == 0\n           ^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 109,
+        "task_id": "HumanEval/109",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ajg6wwu4.py\", line 42, in <module>\n    check(move_one_ball)\n  File \"/tmp/humaneval_ajg6wwu4.py\", line 34, in check\n    assert candidate([3, 4, 5, 1, 2])==True, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 110,
+        "task_id": "HumanEval/110",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 111,
+        "task_id": "HumanEval/111",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 112,
+        "task_id": "HumanEval/112",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 113,
+        "task_id": "HumanEval/113",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_do9_ahhg.py\", line 32, in <module>\n    check(odd_count)\n  File \"/tmp/humaneval_do9_ahhg.py\", line 19, in check\n    assert candidate(['1234567']) == [\"the number of odd elements 4n the str4ng 4 of the 4nput.\"], \"Test 1\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Test 1\n"
+      },
+      {
+        "index": 114,
+        "task_id": "HumanEval/114",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 115,
+        "task_id": "HumanEval/115",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_7ns7cvnr.py\", line 4\n    \"\"\"\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 50)\n"
+      },
+      {
+        "index": 116,
+        "task_id": "HumanEval/116",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_a2rlwq8p.py\", line 33, in <module>\n    check(sort_array)\n  File \"/tmp/humaneval_a2rlwq8p.py\", line 19, in check\n    assert candidate([1,5,2,3,4]) == [1, 2, 4, 3, 5]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 117,
+        "task_id": "HumanEval/117",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_6yvphyj4.py\", line 33, in <module>\n    check(select_words)\n  File \"/tmp/humaneval_6yvphyj4.py\", line 20, in check\n    assert candidate(\"Mary had a little lamb\", 4) == [\"little\"], \"First test error: \" + str(candidate(\"Mary had a little lamb\", 4))      \n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: First test error: None\n"
+      },
+      {
+        "index": 118,
+        "task_id": "HumanEval/118",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_25kngem4.py\", line 41, in <module>\n    check(get_closest_vowel)\n  File \"/tmp/humaneval_25kngem4.py\", line 22, in check\n    assert candidate(\"yogurt\") == \"u\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 119,
+        "task_id": "HumanEval/119",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 120,
+        "task_id": "HumanEval/120",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_lhybs47l.py\", line 3\n    \"\"\"\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 46)\n"
+      },
+      {
+        "index": 121,
+        "task_id": "HumanEval/121",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 122,
+        "task_id": "HumanEval/122",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 123,
+        "task_id": "HumanEval/123",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_o96odbqx.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 124,
+        "task_id": "HumanEval/124",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_o61ofklx.py\", line 60, in <module>\n    check(valid_date)\n  File \"/tmp/humaneval_o61ofklx.py\", line 27, in check\n    assert candidate('03-11-2000') == True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 125,
+        "task_id": "HumanEval/125",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_nqwdder0.py\", line 3\n    '''\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 23)\n"
+      },
+      {
+        "index": 126,
+        "task_id": "HumanEval/126",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 127,
+        "task_id": "HumanEval/127",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_30nxt263.py\", line 3\n    \"\"\"You are given two intervals,\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 30)\n"
+      },
+      {
+        "index": 128,
+        "task_id": "HumanEval/128",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 129,
+        "task_id": "HumanEval/129",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_wll1iia9.py\", line 54, in <module>\n    check(minPath)\n  File \"/tmp/humaneval_wll1iia9.py\", line 38, in check\n    assert candidate([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3) == [1, 2, 1]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 130,
+        "task_id": "HumanEval/130",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_upgnzrm5.py\", line 39, in <module>\n    check(tri)\n  File \"/tmp/humaneval_upgnzrm5.py\", line 25, in check\n    assert candidate(3) == [1, 3, 2.0, 8.0]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 131,
+        "task_id": "HumanEval/131",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 132,
+        "task_id": "HumanEval/132",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_fhxpoyt9.py\", line 39, in <module>\n    check(is_nested)\n  File \"/tmp/humaneval_fhxpoyt9.py\", line 20, in check\n    assert candidate('[[]]') == True, \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 133,
+        "task_id": "HumanEval/133",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 134,
+        "task_id": "HumanEval/134",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ykd3yxex.py\", line 36, in <module>\n    check(check_if_last_char_is_a_letter)\n  File \"/tmp/humaneval_ykd3yxex.py\", line 20, in check\n    assert candidate(\"apple\") == False\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 135,
+        "task_id": "HumanEval/135",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 136,
+        "task_id": "HumanEval/136",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 137,
+        "task_id": "HumanEval/137",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 138,
+        "task_id": "HumanEval/138",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_k0em492v.py\", line 3\n    \"\"\"Evaluate whether the given number n can be written as the sum of exactly 4 positive even numbers\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 18)\n"
+      },
+      {
+        "index": 139,
+        "task_id": "HumanEval/139",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 140,
+        "task_id": "HumanEval/140",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_kc6w0782.py\", line 28, in <module>\n    check(fix_spaces)\n  File \"/tmp/humaneval_kc6w0782.py\", line 18, in check\n    assert candidate(\"Example\") == \"Example\", \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 141,
+        "task_id": "HumanEval/141",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_74a8_34l.py\", line 3\n    \"\"\"Create a function which takes a string representing a file's name, and returns\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 51)\n"
+      },
+      {
+        "index": 142,
+        "task_id": "HumanEval/142",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_qr1o9l3g.py\", line 37, in <module>\n    check(sum_squares)\n  File \"/tmp/humaneval_qr1o9l3g.py\", line 21, in check\n    assert candidate([1,2,3]) == 6\n           ^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 143,
+        "task_id": "HumanEval/143",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_gog7jjpn.py\", line 1\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 144,
+        "task_id": "HumanEval/144",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 145,
+        "task_id": "HumanEval/145",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_cfc_6dzk.py\", line 30, in <module>\n    check(order_by_points)\n  File \"/tmp/humaneval_cfc_6dzk.py\", line 18, in check\n    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 146,
+        "task_id": "HumanEval/146",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_r1h1bwl3.py\", line 10\n    ```python\n    ^\nSyntaxError: invalid syntax\n"
+      },
+      {
+        "index": 147,
+        "task_id": "HumanEval/147",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_1uiiou4v.py\", line 26, in <module>\n    check(get_max_triples)\n  File \"/tmp/humaneval_1uiiou4v.py\", line 20, in check\n    assert candidate(5) == 1\n           ^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 148,
+        "task_id": "HumanEval/148",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 149,
+        "task_id": "HumanEval/149",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 150,
+        "task_id": "HumanEval/150",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 151,
+        "task_id": "HumanEval/151",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_9qfp2os4.py\", line 34, in <module>\n    check(double_the_difference)\n  File \"/tmp/humaneval_9qfp2os4.py\", line 19, in check\n    assert candidate([]) == 0 , \"This prints if this assert fails 1 (good for debugging!)\"\n           ^^^^^^^^^^^^^^^^^^\nAssertionError: This prints if this assert fails 1 (good for debugging!)\n"
+      },
+      {
+        "index": 152,
+        "task_id": "HumanEval/152",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 153,
+        "task_id": "HumanEval/153",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_ke4db3oa.py\", line 38, in <module>\n    check(Strongest_Extension)\n  File \"/tmp/humaneval_ke4db3oa.py\", line 24, in check\n    assert candidate('Watashi', ['tEN', 'niNE', 'eIGHt8OKe']) == 'Watashi.eIGHt8OKe'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+      },
+      {
+        "index": 154,
+        "task_id": "HumanEval/154",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_yiejvss2.py\", line 30, in <module>\n    check(cycpattern_check)\n  File \"/tmp/humaneval_yiejvss2.py\", line 21, in check\n    assert  candidate(\"xyzw\",\"xyw\") == False , \"test #0\"\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: test #0\n"
+      },
+      {
+        "index": 155,
+        "task_id": "HumanEval/155",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 156,
+        "task_id": "HumanEval/156",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_tf1vt_zu.py\", line 3\n    \"\"\"\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 35)\n"
+      },
+      {
+        "index": 157,
+        "task_id": "HumanEval/157",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_4zpkpl_s.py\", line 3\n    '''\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 26)\n"
+      },
+      {
+        "index": 158,
+        "task_id": "HumanEval/158",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_fs1jdj2b.py\", line 32, in <module>\n    check(find_max)\n  File \"/tmp/humaneval_fs1jdj2b.py\", line 17, in check\n    assert (candidate([\"name\", \"of\", \"string\"]) == \"string\"), \"t1\"\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: t1\n"
+      },
+      {
+        "index": 159,
+        "task_id": "HumanEval/159",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 160,
+        "task_id": "HumanEval/160",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 161,
+        "task_id": "HumanEval/161",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 162,
+        "task_id": "HumanEval/162",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 163,
+        "task_id": "HumanEval/163",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_nx5ltlk6.py\", line 27, in <module>\n    check(generate_integers)\n  File \"/tmp/humaneval_nx5ltlk6.py\", line 17, in check\n    assert candidate(2, 10) == [2, 4, 6, 8], \"Test 1\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Test 1\n"
+      }
+    ]
+  },
+  "aggregate": {
+    "gsm8k_score": 1.0,
+    "humaneval_score": 0.49390243902439024
+  },
+  "wall_time_s": 5705.54,
+  "timestamp": "2026-08-27T14:35:55.403679+00:00"
+}

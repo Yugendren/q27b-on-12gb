@@ -1,0 +1,35 @@
+config	phase	model	kv	ctx	spec	n_max	status	decode_ts_mean	decode_ts_pooled	acceptance	mean_len	predicted_n	prompt_ts	vram_peak_mib	sm_clock_mean	temp_max_c	out_sha1	note
+content_c16k_q8kv_iq3_mtp2	content	UD-IQ3_XXS	q8_0	16384	draft-mtp	2	ok	33.056	32.809	0.7321	2.485	400.0	192.8	11832	1773.3	81	18ed17c5,b1f3c001,bc4666f1,cc533d0c,ef26f5af	
+content_c16k_q8kv_iq3_nospec	content	UD-IQ3_XXS	q8_0	16384	none	-	ok	20.009	20.059	-	-	400.0	228.5	10986	1769.5	82	085cdcf5,298d04c5,b9111e79,ef26f5af,f4ba0fa0	
+d14k_f16kv_iq3_mtp2	depth	UD-IQ3_XXS	f16	16384	draft-mtp	2	FAIL_RUN	-	-	-	-	-	-	11966	1946.0	65	-	server died on first request (CUDA OOM in graph compute)
+d14k_f16kv_iq3_nospec	depth	UD-IQ3_XXS	f16	16384	none	-	ok	19.108	19.156	-	-	400.0	488.4	11458	1806.1	82	1c6935fe	
+d14k_q8kv_iq3_mtp2	depth	UD-IQ3_XXS	q8_0	16384	draft-mtp	2	ok	35.996	36.086	0.9814	2.96	400.0	470.9	11854	1827.7	82	5a6ddb53	
+d14k_q8kv_iq3_nospec	depth	UD-IQ3_XXS	q8_0	16384	none	-	ok	18.126	18.171	-	-	400.0	485.7	11004	1795.2	82	5a6ddb53	
+c12k_f16kv_iq3_mtp2	sweep	UD-IQ3_XXS	f16	12288	draft-mtp	2	ok	33.924	34.009	0.7839	2.57	400.0	256.7	12026	-	-	b5f29bf6	
+c16k_f16kv_iq3_mtp2	sweep	UD-IQ3_XXS	f16	16384	draft-mtp	2	FAIL_RUN	-	-	-	-	-	-	11960	-	-	-	server died on first request (CUDA OOM in graph compute)
+c16k_f16kv_iq3_mtp3	sweep	UD-IQ3_XXS	f16	16384	draft-mtp	3	FAIL_LOAD	-	-	-	-	-	-	-	-	-	-	FAIL:out of memory
+c16k_f16kv_iq3_mtp4	sweep	UD-IQ3_XXS	f16	16384	draft-mtp	4	FAIL_LOAD	-	-	-	-	-	-	-	-	-	-	FAIL:out of memory
+c16k_f16kv_iq3_mtp5	sweep	UD-IQ3_XXS	f16	16384	draft-mtp	5	FAIL_LOAD	-	-	-	-	-	-	-	-	-	-	FAIL:out of memory
+c16k_f16kv_iq3_nospec	sweep	UD-IQ3_XXS	f16	16384	none	-	ok	20.146	20.197	-	-	400.0	318.2	11440	-	-	-	
+c16k_f16kv_q2kxl_mtp2	sweep	UD-Q2_K_XL	f16	16384	draft-mtp	2	ok	34.73	34.816	0.7707	2.54	400.0	276.8	11156	-	-	-	
+c16k_f16kv_q2kxl_mtp3	sweep	UD-Q2_K_XL	f16	16384	draft-mtp	3	ok	33.382	33.465	0.6608	2.98	400.0	263.1	11310	-	-	736524c7	
+c16k_f16kv_q2kxl_mtp4	sweep	UD-Q2_K_XL	f16	16384	draft-mtp	4	ok	34.335	34.421	0.6166	3.44	400.0	255.3	11462	-	-	da652c5b	
+c16k_q8kv_iq3_mtp2	sweep	UD-IQ3_XXS	q8_0	16384	draft-mtp	2	ok	34.388	34.473	0.7814	2.56	400.0	277.1	11958	-	-	-	
+c16k_q8kv_iq3_mtp2_newbuild	sweep	UD-IQ3_XXS	q8_0	16384	draft-mtp	2	ok	34.082	34.167	0.7814	2.56	400.0	273.7	11830	-	-	-	
+c16k_q8kv_iq3_mtp3	sweep	UD-IQ3_XXS	q8_0	16384	draft-mtp	3	ok	32.76	32.842	0.6375	2.91	400.0	272.2	11984	-	-	29a74676	
+c16k_q8kv_iq3_mtp4	sweep	UD-IQ3_XXS	q8_0	16384	draft-mtp	4	FAIL_RUN	-	-	-	-	-	-	11980	-	-	-	server died on first request (CUDA OOM in graph compute)
+c16k_q8kv_iq3_mtp5	sweep	UD-IQ3_XXS	q8_0	16384	draft-mtp	5	FAIL_RUN	-	-	-	-	-	-	11950	-	-	-	server died on first request (CUDA OOM in graph compute)
+c16k_q8kv_iq3_nospec	sweep	UD-IQ3_XXS	q8_0	16384	none	-	ok	20.001	20.051	-	-	400.0	312.8	10986	-	-	-	
+c16k_q8kv_q2kxl_mtp2	sweep	UD-Q2_K_XL	q8_0	16384	draft-mtp	2	ok	34.644	34.731	0.7814	2.56	400.0	277.3	10704	-	-	-	
+c8k_f16kv_iq3_mtp2	sweep	UD-IQ3_XXS	f16	8192	draft-mtp	2	ok	33.884	33.969	0.7839	2.57	400.0	258.3	11746	-	-	b5f29bf6	
+c8k_f16kv_iq3_mtp3	sweep	UD-IQ3_XXS	f16	8192	draft-mtp	3	ok	34.509	34.577	0.7004	3.1	400.0	258.0	11900	-	-	865e38a3,b5f29bf6	greedy output NOT reproducible across reps: code
+c8k_f16kv_iq3_nospec	sweep	UD-IQ3_XXS	f16	8192	none	-	ok	20.036	20.086	-	-	400.0	307.8	10920	-	-	5f3e48e7	
+c8k_q8kv_iq3_mtp2	sweep	UD-IQ3_XXS	q8_0	8192	draft-mtp	2	ok	34.055	34.14	0.7814	2.56	400.0	273.5	11512	-	-	-	
+c8k_q8kv_iq3_mtp3	sweep	UD-IQ3_XXS	q8_0	8192	draft-mtp	3	ok	32.573	32.654	0.6375	2.91	400.0	268.7	11666	-	-	29a74676	
+c8k_q8kv_iq3_mtp4	sweep	UD-IQ3_XXS	q8_0	8192	draft-mtp	4	ok	31.613	31.692	0.5558	3.21	400.0	257.9	11818	-	-	558e430d	
+c8k_q8kv_iq3_mtp5	sweep	UD-IQ3_XXS	q8_0	8192	draft-mtp	5	ok	30.215	30.291	0.508	3.52	400.0	256.7	11970	-	-	558e430d	
+c8k_q8kv_iq3_nospec	sweep	UD-IQ3_XXS	q8_0	8192	none	-	ok	19.919	19.969	-	-	400.0	309.1	10684	-	-	29a74676	
+z_repeat_c16k_q8kv_iq3_mtp2	sweep	UD-IQ3_XXS	q8_0	16384	draft-mtp	2	ok	34.194	34.279	0.7814	2.56	400.0	272.9	11830	1790.5	80	1d82fb3c	
+z_repeat_c16k_q8kv_q2kxl_mtp2	sweep	UD-Q2_K_XL	q8_0	16384	draft-mtp	2	ok	34.619	34.705	0.7814	2.56	400.0	270.7	10704	1784.9	81	d7b314ae	
+z_repeat_c8k_f16kv_iq3_mtp3	sweep	UD-IQ3_XXS	f16	8192	draft-mtp	3	ok	34.886	34.952	0.7004	3.1	400.0	273.5	11900	1793.8	81	865e38a3,b5f29bf6	greedy output NOT reproducible across reps: code
+z_repeat_c8k_q8kv_iq3_mtp3	sweep	UD-IQ3_XXS	q8_0	8192	draft-mtp	3	ok	32.659	32.741	0.6375	2.91	400.0	271.8	11666	1792.8	81	29a74676	

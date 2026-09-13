@@ -1,0 +1,12 @@
+[eval_quality] gsm8k 1/8 correct=True
+[eval_quality] gsm8k 2/8 correct=True
+[eval_quality] gsm8k 3/8 correct=True
+[eval_quality] gsm8k 4/8 correct=True
+[eval_quality] gsm8k 5/8 correct=True
+[eval_quality] gsm8k 6/8 correct=True
+[eval_quality] gsm8k 7/8 correct=True
+[eval_quality] gsm8k 8/8 correct=True
+[eval_quality] humaneval 1/4 (HumanEval/0) passed=True
+[eval_quality] humaneval 2/4 (HumanEval/1) passed=False
+[eval_quality] humaneval 3/4 (HumanEval/2) passed=True
+[eval_quality] humaneval 4/4 (HumanEval/3) passed=False

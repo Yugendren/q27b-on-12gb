@@ -1,0 +1,12 @@
+backend          ntok         ms       tok/s
+embed-gpu        2001       83.5     23959.8  (17 chunks)
+embed-gpu        6001      111.3     53940.3  (50 chunks)
+embed-gpu       12001      215.9     55592.5  (100 chunks)
+embed-gpu       24000      422.4     56822.8  (200 chunks)
+wrote /data/projects/companion_prefill/results/3060_c_s_embed-gpu.json
+backend          ntok         ms       tok/s
+embed-cpu        2001      236.3      8469.8  (17 chunks)
+embed-cpu        6001      418.4     14342.8  (50 chunks)
+embed-cpu       12001      813.0     14761.0  (100 chunks)
+embed-cpu       24000     1619.2     14821.9  (200 chunks)
+wrote /data/projects/companion_prefill/results/3060_c_s_embed-cpu.json

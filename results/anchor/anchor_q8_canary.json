@@ -1,0 +1,580 @@
+{
+  "endpoint": "http://127.0.0.1:18080",
+  "model_info": {
+    "raw": {
+      "models": [
+        {
+          "name": "models/Qwen3.8-27B-Q8_0.gguf",
+          "model": "models/Qwen3.8-27B-Q8_0.gguf",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "models/Qwen3.8-27B-Q8_0.gguf",
+          "aliases": [
+            "models/Qwen3.8-27B-Q8_0.gguf"
+          ],
+          "tags": [],
+          "object": "model",
+          "created": 1788249418,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": true,
+            "n_vocab": 248320,
+            "n_ctx": 8192,
+            "n_ctx_train": 262144,
+            "n_embd": 5120,
+            "n_params": 27320697856,
+            "size": 29036089344,
+            "ftype": "Q8_0"
+          }
+        }
+      ]
+    },
+    "model_id": "models/Qwen3.8-27B-Q8_0.gguf"
+  },
+  "b1_tool_call_fidelity": {
+    "n": 28,
+    "passed": 28,
+    "score": 1.0,
+    "results": [
+      {
+        "id": "b1-rf-01",
+        "user": "Can you show me what's inside src/utils/parser.py?",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"src/utils/parser.py\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rf-02",
+        "user": "I need to see the contents of config/settings.yaml before I edit it.",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"config/settings.yaml\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rf-03",
+        "user": "Open the README.md at the repo root and tell me what it says.",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"README.md\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rf-04",
+        "user": "What's currently in the file at nested/deep/module/handler.go?",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"nested/deep/module/handler.go\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rf-05",
+        "user": "Pull up the contents of .env.example for me.",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \".env.example\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rf-06",
+        "user": "Before we refactor it, read tests/unit/test_auth.py so we know what it covers.",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"tests/unit/test_auth.py\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rf-07",
+        "user": "Check the file build/Dockerfile \u2014 what base image does it use?",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"build/Dockerfile\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-01",
+        "user": "Run the test suite for the payments module and tell me if it passes.",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"payments\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-02",
+        "user": "Please execute the tests in tests/test_billing.py.",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"tests/test_billing.py\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-03",
+        "user": "I just changed the auth code \u2014 kick off the auth test target.",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"auth\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-04",
+        "user": "Can you run the full integration test suite now?",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"integration\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-05",
+        "user": "Test the checkout flow module before we merge this PR.",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"checkout flow\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-06",
+        "user": "Fire off run_tests for the 'api_gateway' target and report back.",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"api_gateway\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-rt-07",
+        "user": "Verify nothing broke by running tests on the entire 'core' package.",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"core\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-sr-01",
+        "user": "Find every place in the codebase that calls `deprecated_login()`, top 10 hits.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"deprecated_login(\", \"max_results\": 10}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-sr-02",
+        "user": "Search for the string 'TODO: security' across the repo, give me up to 5 results.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"TODO: security\", \"max_results\": 5}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-sr-03",
+        "user": "Where is the class `RateLimiter` defined? Show at most 3 matches.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"class RateLimiter\", \"max_results\": 3}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-sr-04",
+        "user": "Look for usages of the env var DATABASE_URL, limit to 20 results.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"DATABASE_URL\", \"max_results\": 20}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-sr-05",
+        "user": "Grep the project for 'connection_timeout' and give me the top result only.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"connection_timeout\", \"max_results\": 1}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-sr-06",
+        "user": "Find all references to the function `hash_password`, up to 8 matches.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"hash_password\", \"max_results\": 8}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-mix-01",
+        "user": "Does the notification_service target still pass its tests after my change?",
+        "expects_tool": "run_tests",
+        "response": "{\"tool\": \"run_tests\", \"args\": {\"target\": \"notification_service\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-mix-02",
+        "user": "What does the migration script at db/migrations/0007_add_index.sql actually do?",
+        "expects_tool": "read_file",
+        "response": "{\"tool\": \"read_file\", \"args\": {\"path\": \"db/migrations/0007_add_index.sql\"}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-mix-03",
+        "user": "I think there's dead code referencing `old_api_client` somewhere \u2014 find up to 6 spots.",
+        "expects_tool": "search",
+        "response": "{\"tool\": \"search\", \"args\": {\"query\": \"old_api_client\", \"max_results\": 6}}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b1-no-01",
+        "user": "What is 17 times 4?",
+        "expects_tool": null,
+        "response": "68",
+        "passed": true,
+        "reason": "no call (correct)",
+        "error": null
+      },
+      {
+        "id": "b1-no-02",
+        "user": "What's the capital of Japan?",
+        "expects_tool": null,
+        "response": "Tokyo.",
+        "passed": true,
+        "reason": "no call (correct)",
+        "error": null
+      },
+      {
+        "id": "b1-no-03",
+        "user": "In one sentence, what does the acronym HTTP stand for?",
+        "expects_tool": null,
+        "response": "HTTP stands for HyperText Transfer Protocol.",
+        "passed": true,
+        "reason": "no call (correct)",
+        "error": null
+      },
+      {
+        "id": "b1-no-04",
+        "user": "Say hello and introduce yourself in one short sentence.",
+        "expects_tool": null,
+        "response": "Hello, I'm an AI coding assistant here to help you with your development tasks.",
+        "passed": true,
+        "reason": "no call (correct)",
+        "error": null
+      },
+      {
+        "id": "b1-no-05",
+        "user": "Is Python a statically typed or dynamically typed language? One word.",
+        "expects_tool": null,
+        "response": "Dynamically",
+        "passed": true,
+        "reason": "no call (correct)",
+        "error": null
+      }
+    ]
+  },
+  "b2_structured_output_stability": {
+    "n": 15,
+    "passed": 15,
+    "score": 1.0,
+    "results": [
+      {
+        "id": "b2-json-01",
+        "user": "Respond with a single JSON object with exactly these two keys: \"status\" (a string, either \"pass\" or \"fail\") and \"issues\" (an array of strings, may be empty). Output only the JSON object, nothing else.",
+        "response": "{\n  \"status\": \"pass\",\n  \"issues\": []\n}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-json-02",
+        "user": "Respond with a single JSON object with exactly these keys: \"language\" (string) and \"keywords\" (array of strings) describing the Python programming language. Output only the JSON object, nothing else.",
+        "response": "{\n  \"language\": \"Python\",\n  \"keywords\": [\n    \"interpreted\",\n    \"high-level\",\n    \"general-purpose\",\n    \"object-oriented\",\n    \"dynamic-typing\",\n    \"garbage-collected\",\n    \"readable\",\n    \"versatile\",\n    \"data-science\",\n    \"web-development\",\n    \"automation\",\n    \"artificial-intelligence\"\n  ]\n}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-json-03",
+        "user": "Respond with a single JSON object with exactly these keys: \"file\" (string) and \"errors\" (array of strings) describing a hypothetical lint result for main.py with two made-up errors. Output only the JSON object, nothing else.",
+        "response": "{\n  \"file\": \"main.py\",\n  \"errors\": [\n    \"Line 10: Undefined variable 'foo' referenced before assignment.\",\n    \"Line 25: Unused import 'os' detected.\"\n  ]\n}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-json-04",
+        "user": "Respond with a single JSON object with exactly these keys: \"name\" (string) and \"tags\" (array of strings) describing a fictional software project called 'Beacon'. Output only the JSON object, nothing else.",
+        "response": "{\n  \"name\": \"Beacon\",\n  \"tags\": [\n    \"distributed-systems\",\n    \"real-time\",\n    \"go\",\n    \"open-source\"\n  ]\n}",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-table-01",
+        "user": "Respond with a markdown table with exactly 3 columns \u2014 Name, Type, Default \u2014 and exactly 3 data rows describing three made-up config options. Output only the table, no other text.",
+        "response": "| Name | Type | Default |\n| :--- | :--- | :--- |\n| max_retries | integer | 3 |\n| enable_cache | boolean | true |\n| log_level | string | \"info\" |",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-table-02",
+        "user": "Respond with a markdown table with exactly 2 columns \u2014 Language, Extension \u2014 and exactly 4 data rows for four programming languages. Output only the table, no other text.",
+        "response": "| Language | Extension |\n| :--- | :--- |\n| Python | .py |\n| JavaScript | .js |\n| Java | .java |\n| C++ | .cpp |",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-table-03",
+        "user": "Respond with a markdown table with exactly 4 columns \u2014 Day, Task, Owner, Status \u2014 and exactly 3 data rows for a made-up weekly plan. Output only the table, no other text.",
+        "response": "| Day | Task | Owner | Status |\n| :--- | :--- | :--- | :--- |\n| Monday | Draft project proposal | Alice | In Progress |\n| Wednesday | Review budget estimates | Bob | Pending |\n| Friday | Finalize client presentation | Charlie | Completed |",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-list-01",
+        "user": "List exactly 4 tips for writing clean code, as a numbered list (1. 2. 3. 4.), one short line each. Output only the list, no intro or conclusion.",
+        "response": "1. Use descriptive, self-explanatory names for variables and functions.\n2. Keep functions small and focused on a single responsibility.\n3. Eliminate unnecessary comments by making the code itself clear.\n4. Remove dead code and unused variables to reduce clutter.",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-list-02",
+        "user": "List exactly 5 common HTTP status codes with a one-word meaning each, as a numbered list (1. through 5.), one line each. Output only the list, no intro or conclusion.",
+        "response": "1. 200 OK\n2. 301 Moved\n3. 404 Not\n4. 500 Error\n5. 403 Forbidden",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-list-03",
+        "user": "List exactly 3 differences between a list and a tuple in Python, as a numbered list (1. 2. 3.), one short line each. Output only the list, no intro or conclusion.",
+        "response": "1. Lists are mutable while tuples are immutable.\n2. Lists use square brackets `[]` whereas tuples use parentheses `()`.\n3. Lists are generally slower for iteration than tuples.",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-list-04",
+        "user": "List exactly 6 steps to set up a fresh Git repository and make the first commit, as a numbered list (1. through 6.), one short line each. Output only the list, no intro or conclusion.",
+        "response": "1. Create a new directory for your project.\n2. Run `git init` to initialize the repository.\n3. Add your project files to the staging area.\n4. Configure your Git user name and email.\n5. Write a meaningful commit message.\n6. Execute `git commit` to save the changes.",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-code-01",
+        "user": "Write a Python function `is_even(n)` that returns True if n is even, False otherwise. Respond with a single fenced code block tagged `python` containing only the function, no explanation before or after.",
+        "response": "```python\ndef is_even(n):\n    return n % 2 == 0\n```",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-code-02",
+        "user": "Write a JavaScript function `clamp(x, lo, hi)` that clamps x into [lo, hi]. Respond with a single fenced code block tagged `javascript` containing only the function, no explanation before or after.",
+        "response": "```javascript\nfunction clamp(x, lo, hi) {\n  return Math.min(Math.max(x, lo), hi);\n}\n```",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-code-03",
+        "user": "Write a bash one-liner (wrapped in a function called `count_lines`) that prints the number of lines in a file given as $1. Respond with a single fenced code block tagged `bash` containing only the function, no explanation before or after.",
+        "response": "```bash\ncount_lines() { wc -l < \"$1\"; }\n```",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b2-code-04",
+        "user": "Write a SQL query that selects the `id` and `name` columns from a table called `users` where `active` is true. Respond with a single fenced code block tagged `sql` containing only the query, no explanation before or after.",
+        "response": "```sql\nSELECT id, name FROM users WHERE active = TRUE;\n```",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      }
+    ]
+  },
+  "b3_instruction_binding": {
+    "n": 15,
+    "passed": 11,
+    "score": 0.7333333333333333,
+    "results": [
+      {
+        "id": "b3-01",
+        "user": "Describe what a firewall does in exactly 3 sentences.",
+        "response": "A firewall acts as a barrier between trusted internal networks and untrusted external networks, such as the internet. It monitors incoming and outgoing traffic based on predetermined security rules to block unauthorized access and malicious threats. By filtering data packets, it ensures that only legitimate and safe communications are permitted to pass through.",
+        "passed": true,
+        "reason": "found 3 sentences, expected 3",
+        "error": null
+      },
+      {
+        "id": "b3-02",
+        "user": "Explain what caching is, but never use the letter 'e' anywhere in your response.",
+        "response": "Storing data in a fast spot.\n\nThis trick aids apps. It holds info for quick grab. No wait for slow disk.\n\nThink of it as a stash. You put stuff there to find it fast. This cuts down on lag.\n\nIt is a common tool. It boosts speed. It cuts cost.\n\nDo not let it rot. Old data must go. Fresh data must stay.\n\nThis is how it works.",
+        "passed": false,
+        "reason": "letter 'e' present",
+        "error": null
+      },
+      {
+        "id": "b3-03",
+        "user": "Explain briefly what a compiler does, then end your response with the single word DONE (all caps, as the very last word).",
+        "response": "A compiler translates high-level source code into low-level machine code that a computer's processor can execute, performing tasks like syntax checking, optimization, and code generation.\nDONE",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b3-04",
+        "user": "Explain what a variable is in programming. Output only lowercase letters \u2014 no uppercase letters anywhere, not even at the start of the sentence.",
+        "response": "a variable is a named storage location in memory that holds a value which can be changed during the execution of a program.",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b3-05",
+        "user": "Explain what a database index is, without using the word 'the' anywhere in your response.",
+        "response": "A database index serves as a structured data store that improves speed of data retrieval. Think of it like a book\u2019s table of contents. Instead of scanning every page to find specific information, one can jump directly to relevant sections.\n\nIndexes store sorted references to table rows. When a query runs, the system consults this structure to locate records quickly. This process drastically reduces read time. However, writing data becomes slower because indexes must be updated alongside new",
+        "passed": false,
+        "reason": "forbidden word 'the' present",
+        "error": null
+      },
+      {
+        "id": "b3-06",
+        "user": "Describe what version control is. Respond as exactly one paragraph with no line breaks anywhere.",
+        "response": "Version control is a system that tracks and manages changes to files over time, allowing users to record modifications, revert to previous states, and collaborate with others by maintaining a detailed history of every edit made to a project.",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b3-07",
+        "user": "Write a description of the ocean that is exactly 50 words long. Count carefully.",
+        "response": "The vast ocean stretches endlessly, its surface shimmering under the bright sun. Deep blue waves crash rhythmically against rocky shores, creating white foam. Beneath the surface, colorful fish swim among coral reefs, while whales glide silently through the dark, mysterious depths of the endless blue water.",
+        "passed": false,
+        "reason": "found 46 words, expected 50",
+        "error": null
+      },
+      {
+        "id": "b3-08",
+        "user": "Explain what an API is. Begin your response with the exact word 'Certainly'.",
+        "response": "Certainly. An API, or Application Programming Interface, is a set of rules, protocols, and tools that allows different software applications to communicate with each other. Think of it as a waiter in a restaurant: you (the client) place an order, the waiter (the API) takes it to the kitchen (the server), and then brings the food (the data) back to you, without you needing to know how the kitchen operates or how the",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b3-09",
+        "user": "Explain what recursion is, using no punctuation marks at all anywhere in your response \u2014 not even periods or commas.",
+        "response": "Recursion is a method where a function calls itself to solve smaller parts of a problem until it reaches a base case that stops the process",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b3-10",
+        "user": "Ask three separate questions about how neural networks work. Respond using only questions \u2014 every sentence must end with a question mark.",
+        "response": "Do you understand how weights are adjusted during backpropagation?\nHow does the activation function introduce non-linearity into the model?\nWhat role does the learning rate play in the optimization process?",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      },
+      {
+        "id": "b3-11",
+        "user": "Write a short paragraph about marine biology that includes the word 'octopus' exactly once.",
+        "response": "Marine biologists are fascinated by the complex neural systems of cephalopods, particularly the **octopus**, which possesses a distributed brain that allows for remarkable problem-solving abilities and adaptive camouflage in its underwater habitat.",
+        "passed": true,
+        "reason": "word 'octopus' occurs 1 times, expected 1",
+        "error": null
+      },
+      {
+        "id": "b3-12",
+        "user": "List exactly 5 bullet points about good password hygiene, each starting with a dash ('- '). Output only the bullets, nothing else.",
+        "response": "- Use a unique, complex password for every account to prevent credential stuffing attacks.\n- Enable multi-factor authentication (MFA) to add an extra layer of security beyond just a password.\n- Utilize a reputable password manager to generate and store strong, random passwords securely.\n- Avoid reusing passwords across different platforms, especially for sensitive financial or email accounts.\n- Regularly update passwords for critical accounts and immediately change them if a data breach is suspected.",
+        "passed": true,
+        "reason": "found 5 bullets, expected 5",
+        "error": null
+      },
+      {
+        "id": "b3-13",
+        "user": "Explain what a hash function is, using no word longer than 5 letters anywhere in your response.",
+        "response": "A hash is a code. It takes data in. It spits out a tag. The tag is short. It is fixed.\n\nIf you change one bit of the start, the end tag shifts a lot. This makes it hard to guess the start from the end.\n\nWe use this for keys. It helps find files fast. It also checks if data is safe. If the tag changes, the data was touched.\n\nIt is not a lock. It is a map. It links a big file to a small ID. This",
+        "passed": false,
+        "reason": "words over 5 letters: ['change', 'shifts', 'checks', 'changes', 'touched']",
+        "error": null
+      },
+      {
+        "id": "b3-14",
+        "user": "Write two sentences about software craftsmanship, and repeat the exact phrase 'quality over quantity' exactly twice somewhere in your response.",
+        "response": "True software craftsmanship demands that we prioritize quality over quantity in every line of code we write. By consistently choosing quality over quantity, developers build systems that are not only robust but also sustainable for the long term.",
+        "passed": true,
+        "reason": "phrase 'quality over quantity' occurs 2 times, expected 2",
+        "error": null
+      },
+      {
+        "id": "b3-15",
+        "user": "Explain what encryption is in one short paragraph, written entirely in uppercase letters.",
+        "response": "ENCRYPTION IS THE PROCESS OF CONVERTING PLAINTEXT DATA INTO AN UNREADABLE FORMAT CALLED CIPHERTEXT USING ALGORITHMS AND KEYS, ENSURING THAT ONLY AUTHORIZED PARTIES WITH THE CORRECT DECRYPTION KEY CAN ACCESS THE ORIGINAL INFORMATION.",
+        "passed": true,
+        "reason": "ok",
+        "error": null
+      }
+    ]
+  },
+  "aggregate": {
+    "b1_score": 1.0,
+    "b2_score": 1.0,
+    "b3_score": 0.7333333333333333,
+    "canary_score": 0.9111111111111111
+  },
+  "wall_time_s": 106.41,
+  "timestamp": "2026-09-01T07:58:44.801733+00:00"
+}

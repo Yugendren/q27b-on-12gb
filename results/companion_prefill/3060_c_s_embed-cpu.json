@@ -1,0 +1,30 @@
+[
+ {
+  "backend": "embed-cpu",
+  "ntok": 2001,
+  "ms": 236.3,
+  "tok_per_s": 8469.8,
+  "chunks": 17
+ },
+ {
+  "backend": "embed-cpu",
+  "ntok": 6001,
+  "ms": 418.4,
+  "tok_per_s": 14342.8,
+  "chunks": 50
+ },
+ {
+  "backend": "embed-cpu",
+  "ntok": 12001,
+  "ms": 813.0,
+  "tok_per_s": 14761.0,
+  "chunks": 100
+ },
+ {
+  "backend": "embed-cpu",
+  "ntok": 24000,
+  "ms": 1619.2,
+  "tok_per_s": 14821.9,
+  "chunks": 200
+ }
+]

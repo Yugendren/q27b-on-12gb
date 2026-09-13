@@ -1,0 +1,72 @@
+{
+  "corrected": {
+    "flagship": {
+      "passed": 152,
+      "n": 164,
+      "pct": 92.6829268292683,
+      "mean_completion_tokens": 219.77439024390245,
+      "fence_unclosed": 2
+    },
+    "pruned": {
+      "passed": 153,
+      "n": 164,
+      "pct": 93.29268292682927,
+      "mean_completion_tokens": 217.75,
+      "fence_unclosed": 1
+    },
+    "delta_pts": 0.6097560975609753,
+    "mcnemar": {
+      "both": 152,
+      "neither": 11,
+      "flagship_only_b": 0,
+      "pruned_only_c": 1,
+      "p": 1.0
+    },
+    "n_paired": 164
+  },
+  "legacy": {
+    "flagship": {
+      "passed": 135,
+      "n": 164,
+      "pct": 82.3170731707317
+    },
+    "pruned": {
+      "passed": 127,
+      "n": 164,
+      "pct": 77.4390243902439
+    },
+    "delta_pts": -4.878048780487802,
+    "mcnemar": {
+      "flagship_only_b": 9,
+      "pruned_only_c": 1,
+      "p": 0.021484375
+    }
+  },
+  "legacy_prune_losses": [
+    "HumanEval/117",
+    "HumanEval/123",
+    "HumanEval/126",
+    "HumanEval/146",
+    "HumanEval/24",
+    "HumanEval/37",
+    "HumanEval/81",
+    "HumanEval/87",
+    "HumanEval/92"
+  ],
+  "legacy_losses_recovered_under_corrected": [
+    "HumanEval/117",
+    "HumanEval/123",
+    "HumanEval/126",
+    "HumanEval/146",
+    "HumanEval/24",
+    "HumanEval/37",
+    "HumanEval/81",
+    "HumanEval/87",
+    "HumanEval/92"
+  ],
+  "n_legacy_losses_recovered": 9,
+  "tripwire_mean_tokens_over_350": {
+    "flagship": false,
+    "pruned": false
+  }
+}

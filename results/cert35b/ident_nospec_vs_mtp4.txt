@@ -1,0 +1,22 @@
+
+probe              n_a   n_b       nospec         mtp4  identical
+code_btree         512   512 a52bf2e17667 2c8a01c3e3ec  False
+    first divergence at char 27:
+      nospec: ...'```python\n"""\nPersistent B-Tree Index on Disk\n\nThis module implements a persistent B-tr'
+      mtp4: ...'```python\n"""\nPersistent B-tree index on disk with crash-safe write path.\n\nThis module '
+code_lsm           512   512 2fdedbdbfc8a 9bd255c67d6f  False
+    first divergence at char 99:
+      nospec: ...'able implementation using a skip list,\nWrite-Ahead Log (WAL) for durability, and SSTable flush with\na sparse index for e'
+      mtp4: ...'able implementation using a skip list,\nWrite-Ahead Log (WAL), and SSTable flush with sparse index.\n\nThis module provides'
+struct_json        512   512 a899cb563f59 dd730ef77220  False
+    first divergence at char 78:
+      nospec: ...'    "schema_version": "1.2.0",\n    "registry_url": "https://artifacts.nebula-cloud.io/v2",\n    "generated_at": "2023-10-'
+      mtp4: ...'    "schema_version": "1.2.0",\n    "registry_url": "https://registry.example.com/v2",\n    "generated_at": "2023-10-27T14'
+prose_ssd          512   512 e203132c8637 4914299d5719  False
+    first divergence at char 245:
+      nospec: ...'ement that data must be erased in large blocks before being rewritten. When a drive is nearly empty, the controller has '
+      mtp4: ...'ement that data must be erased in large blocks before being programmed in smaller pages. When a drive is nearly empty, t'
+humaneval_like     201   201 ca9f71a5916a ca9f71a5916a  True
+
+IDENTICAL 1/5 probes
+VERDICT: *** MTP DIVERGES FROM NO-SPEC — do not ship MTP on quality claims ***

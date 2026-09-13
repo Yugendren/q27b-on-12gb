@@ -1,0 +1,30 @@
+[
+ {
+  "backend": "embed-gpu",
+  "ntok": 2001,
+  "ms": 83.5,
+  "tok_per_s": 23959.8,
+  "chunks": 17
+ },
+ {
+  "backend": "embed-gpu",
+  "ntok": 6001,
+  "ms": 111.3,
+  "tok_per_s": 53940.3,
+  "chunks": 50
+ },
+ {
+  "backend": "embed-gpu",
+  "ntok": 12001,
+  "ms": 215.9,
+  "tok_per_s": 55592.5,
+  "chunks": 100
+ },
+ {
+  "backend": "embed-gpu",
+  "ntok": 24000,
+  "ms": 422.4,
+  "tok_per_s": 56822.8,
+  "chunks": 200
+ }
+]

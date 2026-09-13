@@ -1,0 +1,74 @@
+{
+ "n_rules_in_prompt": 432,
+ "truth": {
+  "5": [
+   35,
+   65
+  ],
+  "17": [
+   30,
+   55
+  ],
+  "200": [
+   65,
+   27
+  ],
+  "215": [
+   81,
+   56
+  ],
+  "400": [
+   41,
+   54
+  ]
+ },
+ "A_control": {
+  "early_5": "<think>\n\n</think>\n\nRule 5: verify precondition 35 then record outcome 65.\n\nThe outcome recorded by Rule 5 is **65**.",
+  "early_17": "<think>\nThe user is asking about Rule 17 specifically. Let me look at the policy to find Rule 17.\n\nRule 17: verify precondition 30 then record",
+  "mid_200": "<think>\n\n</think>\n\nRule 200: verify precondition 65 then record outcome 27.\n\nThe outcome recorded by Rule 200 is **27**.",
+  "mid_215": "<think>\nThe user is asking about Rule 215 specifically. Let me find it in the policy.\n\nRule 215: verify precondition 81 then record outcome 5",
+  "late_400": "<think>\n\n</think>\n\nRule 400: verify precondition 41 then record outcome 54.\n\nThe outcome recorded by Rule 400 is **54**.",
+  "order": "<think>\n\n</think>\n\nYes. Rule 5 is listed near the beginning of the policy, while Rule 400 is listed much later in the sequence. Therefore, Rule 5 comes before"
+ },
+ "save": {
+  "id_slot": 0,
+  "filename": "t3b.bin",
+  "n_saved": 7999,
+  "n_written": 995130040,
+  "timings": {
+   "save_ms": 466.793
+  },
+  "_file_bytes": 995130040,
+  "_wall_s": 0.468
+ },
+ "restore": {
+  "id_slot": 0,
+  "filename": "t3b.bin",
+  "n_restored": 7999,
+  "n_read": 995130040,
+  "timings": {
+   "restore_ms": 267.143
+  },
+  "_file_bytes": 995130040,
+  "_wall_s": 0.268
+ },
+ "B_restored": {
+  "early_5": "<think>\n\n</think>\n\nRule 5: verify precondition 35 then record outcome 65.\n\nThe outcome recorded by Rule 5 is **65**.",
+  "early_17": "<think>\nThe user is asking about Rule 17 specifically. Let me look at the policy to find Rule 17.\n\nRule 17: verify precondition 30 then record",
+  "mid_200": "<think>\n\n</think>\n\nRule 200: verify precondition 65 then record outcome 27.\n\nThe outcome recorded by Rule 200 is **27**.",
+  "mid_215": "<think>\nThe user is asking about Rule 215 specifically. Let me find it in the policy.\n\nRule 215: verify precondition 81 then record outcome 5",
+  "late_400": "<think>\n\n</think>\n\nRule 400: verify precondition 41 then record outcome 54.\n\nThe outcome recorded by Rule 400 is **54**.",
+  "order": "<think>\n\n</think>\n\nYes. Rule 5 is listed near the beginning of the policy, while Rule 400 is listed much later in the sequence. Therefore, Rule 5 comes before"
+ },
+ "B_forcing_full_reprocess": 0,
+ "agree_per_probe": {
+  "early_5": true,
+  "early_17": true,
+  "mid_200": true,
+  "mid_215": true,
+  "late_400": true,
+  "order": true
+ },
+ "agree_count": 6,
+ "n_probes": 6
+}

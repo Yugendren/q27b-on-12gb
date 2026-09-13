@@ -1,0 +1,29 @@
+# humaneval paired comparison: 27B IQ3_XXS no-spec (ab_he50_nospec.jsonl) vs 27B IQ3_XXS MTP n=2 (ab_he50_mtp2.jsonl)
+
+=== Pairing ===
+  n_27B IQ3_XXS no-spec = 50
+  n_27B IQ3_XXS MTP n=2 = 50
+  n_common      = 50
+  only in 27B IQ3_XXS no-spec: (none)
+  only in 27B IQ3_XXS MTP n=2: (none)
+
+=== Rates: passed_at==1 (attempt 1) (each side's own full task set) ===
+  27B IQ3_XXS no-spec        48/50   =  96.00%   95% CI [86.54%, 98.90%]
+  27B IQ3_XXS MTP n=2        49/50   =  98.00%   95% CI [89.50%, 99.65%]
+
+=== McNemar (paired, over n_common) ===
+  b (27B IQ3_XXS no-spec-only wins) = 0
+  c (27B IQ3_XXS MTP n=2-only wins) = 1
+  p (exact, two-sided)  = 1
+  verdict: indistinguishable
+
+=== Discordant task_ids ===
+  27B IQ3_XXS no-spec passed, 27B IQ3_XXS MTP n=2 failed (0): (none)
+  27B IQ3_XXS MTP n=2 passed, 27B IQ3_XXS no-spec failed (1): HumanEval/32
+
+=== Thinking tripwire (humaneval, attempt 1, each side's own full task set) ===
+  27B IQ3_XXS no-spec n=50   mean_completion_tokens=  165.72  ok
+               max_completion_tokens=625  n_with_error=2  n_fence_unclosed=0
+  27B IQ3_XXS MTP n=2 n=50   mean_completion_tokens=  169.18  ok
+               max_completion_tokens=797  n_with_error=1  n_fence_unclosed=0
+

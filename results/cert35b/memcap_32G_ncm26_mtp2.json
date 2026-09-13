@@ -1,0 +1,22 @@
+{
+ "tag": "memcap_32G_ncm26_mtp2",
+ "cap": "32G",
+ "ncm": 26,
+ "spec": "mtp2",
+ "status": "OK",
+ "cap_bound": true,
+ "memory_max_bytes": "34359738368",
+ "load_s": 24,
+ "cgroup_memory_peak": 23842742272,
+ "cgroup_memory_current": 23842484224,
+ "memory_events": "low 0 high 0 max 0 oom 0 oom_kill 0 oom_group_kill 0 ",
+ "memory_pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0 full avg10=0.00 avg60=0.00 avg300=0.00 total=0 ",
+ "decode_tps": [
+  48.04,
+  47.95,
+  47.02,
+  43.32
+ ],
+ "decode_tps_mean": 46.5825,
+ "prefill_tps_mean": 129.525
+}

@@ -1,0 +1,20 @@
+comparison                   probe            n_tok_a n_tok_b 1st div tok 1st div char % of completion
+q8_nospec_A vs q8_mtp2       code_btree           512     512         214          761           41.8%
+q8_nospec_A vs q8_mtp2       code_lsm             512     512          17           60            3.3%
+q8_nospec_A vs q8_mtp2       struct_json          512     512         436         1014           85.2%
+q8_nospec_A vs q8_mtp2       prose_ssd            512     512          18           96            3.5%
+q8_nospec_A vs q8_mtp2       humaneval_like         -       -   IDENTICAL            -               -
+q8c8k_nospec vs q8c8k_mtp3   code_btree           512     512         458         1552           89.5%
+q8c8k_nospec vs q8c8k_mtp3   code_lsm             512     512          17           60            3.3%
+q8c8k_nospec vs q8c8k_mtp3   struct_json            -       -   IDENTICAL            -               -
+q8c8k_nospec vs q8c8k_mtp3   prose_ssd            512     512          18           96            3.5%
+q8c8k_nospec vs q8c8k_mtp3   humaneval_like         -       -   IDENTICAL            -               -
+f16_nospec vs f16_mtp2       code_btree           512     512         154          598           30.1%
+f16_nospec vs f16_mtp2       code_lsm             512     512         156          641           30.5%
+f16_nospec vs f16_mtp2       struct_json            -       -   IDENTICAL            -               -
+f16_nospec vs f16_mtp2       prose_ssd            512     512          18           96            3.5%
+f16_nospec vs f16_mtp2       humaneval_like         -       -   IDENTICAL            -               -
+
+DIVERGING PROBES: 10
+  first-divergence token index: min 17, median 154, max 458
+  as % of completion length:    min 3.3%, max 89.5%

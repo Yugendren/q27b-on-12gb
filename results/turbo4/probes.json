@@ -1,0 +1,418 @@
+{
+ "f16": {
+  "status": "OK",
+  "kv": "f16",
+  "argv": [
+   "/home/ollama/turbo4/buun-llama-cpp/build/bin/llama-server",
+   "-m",
+   "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+   "-ngl",
+   "99",
+   "-fa",
+   "on",
+   "-ctk",
+   "f16",
+   "-ctv",
+   "f16",
+   "-c",
+   "8192",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "18098",
+   "--no-warmup",
+   "-ctxcp",
+   "0",
+   "--parallel",
+   "1",
+   "--chat-template-file",
+   "/data/projects/q27b_on_12gb/models/templates/chat_template.jinja",
+   "--spec-type",
+   "none"
+  ],
+  "probes": [
+   {
+    "i": 0,
+    "prompt": "Write a Python function that merges two sorted lists into one sorted list. Code only.",
+    "sha1": "6bfb1338afa59e80",
+    "n": 112,
+    "content": "```python\ndef merge_sorted_lists(list1, list2):\n    merged = []\n    i, j = 0, 0\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            merged.append(list1[i])\n            i += 1\n        else:\n            merged.append(list2[j])\n            j += 1\n    merged.extend(list1[i:])\n    merged.extend(list2[j:])\n    return merged\n```"
+   },
+   {
+    "i": 1,
+    "prompt": "Explain in exactly three sentences why binary search requires a sorted array.",
+    "sha1": "250efa836ef23629",
+    "n": 80,
+    "content": "Binary search relies on the ability to eliminate half of the remaining elements after each comparison, which is only possible if the data is ordered. Without a sorted sequence, comparing the middle element to the target provides no information about where the target might be located in the unsorted halves. Consequently, the algorithm cannot guarantee finding the element or determining its absence within the logarithmic time complexity that defines its efficiency."
+   },
+   {
+    "i": 2,
+    "prompt": "What is 17 * 23 + 456? Show the arithmetic step by step.",
+    "sha1": "c84930bc41c09c63",
+    "n": 256,
+    "content": "To solve the expression $17 \\times 23 + 456$, we must follow the order of operations (PEMDAS/BODMAS), which dictates that multiplication is performed before addition.\n\n### Step 1: Perform the Multiplication\nFirst, calculate $17 \\times 23$.\n\nWe can break this down using the distributive property:\n$$17 \\times 23 = 17 \\times (20 + 3)$$\n$$= (17 \\times 20) + (17 \\times 3)$$\n\nCalculate each part:\n1.  $17 \\times 20 = 340$\n2.  $17 \\times 3 = 51$\n\nAdd the results together:\n$$340 + 51 = 391$$\n\nSo, $17 \\times 23 = 391$.\n\n### Step 2: Perform the Addition\nNow, substitute the result from Step 1 back into the original expression:\n$$391 + 456$$\n\nAlign the numbers by place value and add:\n\n```text\n  391\n+"
+   },
+   {
+    "i": 3,
+    "prompt": "Write a SQL query that returns the second-highest salary from a table `emp(id, salary)`.",
+    "sha1": "d5ec492ec996ad6a",
+    "n": 256,
+    "content": "# SQL Query: Second-Highest Salary\n\n## Approach\n\nThere are several ways to solve this. Here are the most common and robust methods:\n\n### Method 1: Using `DISTINCT` and `LIMIT` (MySQL/PostgreSQL)\n\n```sql\nSELECT DISTINCT salary\nFROM emp\nORDER BY salary DESC\nLIMIT 1 OFFSET 1;\n```\n\n> **Note:** `DISTINCT` ensures that if multiple employees share the highest salary, we still get the *second-highest distinct* salary.\n\n---\n\n### Method 2: Using a Subquery with `MAX` (Portable SQL)\n\n```sql\nSELECT MAX(salary) AS second_highest_salary\nFROM emp\nWHERE salary < (SELECT MAX(salary) FROM emp);\n```\n\n> This is **ANSI SQL standard** and works across all major databases (MySQL, PostgreSQL, SQL Server, Oracle, etc.). It naturally handles duplicates because it finds the maximum salary that is *strictly less than* the overall maximum.\n\n---\n\n### Method 3: Using `DENSE_RANK()` Window Function (Modern SQL)\n\n```sql\nSELECT salary AS second_highest_salary\nFROM (\n    SELECT salary, DENSE_RANK() OVER (ORDER BY salary"
+   },
+   {
+    "i": 4,
+    "prompt": "List the first 12 prime numbers, comma separated, nothing else.",
+    "sha1": "86c7b5dbafeec358",
+    "n": 43,
+    "content": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37"
+   },
+   {
+    "i": 5,
+    "prompt": "Write a Rust function `fn rev(s: &str) -> String` that reverses a string by grapheme-free chars.",
+    "sha1": "407209ad0118b632",
+    "n": 27,
+    "content": "```rust\nfn rev(s: &str) -> String {\n    s.chars().rev().collect()\n}\n```"
+   },
+   {
+    "i": 6,
+    "prompt": "Summarise the difference between a process and a thread in one paragraph.",
+    "sha1": "80cedca198542b4c",
+    "n": 84,
+    "content": "A process is an independent program in execution with its own memory space and resources, whereas a thread is a lightweight unit of execution within a process that shares the same memory space and resources with other threads in that process. While processes provide isolation and security, making them heavier to create and manage, threads allow for concurrent execution within a single application, enabling faster communication and lower overhead since they do not require separate memory allocation."
+   },
+   {
+    "i": 7,
+    "prompt": "Write a regex that matches an RFC-5322-ish email address and explain each part.",
+    "sha1": "11972082df756a17",
+    "n": 256,
+    "content": "# RFC-5322-ish Email Address Regex\n\n## The Regex\n\n```regex\n^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$\n```\n\n> **Note:** This is a *practical* approximation of RFC 5322, not a full implementation. A truly complete RFC 5322 regex is extremely complex (handling quoted strings, comments, IP literals, etc.) and rarely used in practice. This version covers the vast majority of real-world email addresses.\n\n---\n\n## Breakdown by Part\n\n### 1. Anchors\n\n```\n^ ... $\n```\n- `^` \u2014 Asserts the start of the string.\n- `$` \u2014 Asserts the end of the string.\n- Ensures the **entire** string is a valid email, not just a substring.\n\n---\n\n### 2. Local Part"
+   },
+   {
+    "i": 8,
+    "prompt": "Implement quicksort in C with an in-place Lomuto partition. Code only.",
+    "sha1": "d942421d2c551746",
+    "n": 256,
+    "content": "```c\n#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            swap(&arr[i], &arr[j]);\n        }\n    }\n    swap(&arr[i + 1], &arr[high]);\n    return i + 1;\n}\n\nvoid quicksort(int arr[], int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quicksort(arr, low, pi - 1);\n        quicksort(arr, pi + 1, high);\n    }\n}\n\nint main() {\n    int arr[] = {10, 7, 2, 1, 5, 3, 8, 4, 6, "
+   },
+   {
+    "i": 9,
+    "prompt": "Name the seven layers of the OSI model in order, one per line, nothing else.",
+    "sha1": "13d3e56bd3cf4734",
+    "n": 15,
+    "content": "Physical\nData Link\nNetwork\nTransport\nSession\nPresentation\nApplication"
+   }
+  ]
+ },
+ "q8_0": {
+  "status": "OK",
+  "kv": "q8_0",
+  "argv": [
+   "/home/ollama/turbo4/buun-llama-cpp/build/bin/llama-server",
+   "-m",
+   "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+   "-ngl",
+   "99",
+   "-fa",
+   "on",
+   "-ctk",
+   "q8_0",
+   "-ctv",
+   "q8_0",
+   "-c",
+   "8192",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "18098",
+   "--no-warmup",
+   "-ctxcp",
+   "0",
+   "--parallel",
+   "1",
+   "--chat-template-file",
+   "/data/projects/q27b_on_12gb/models/templates/chat_template.jinja",
+   "--spec-type",
+   "none"
+  ],
+  "probes": [
+   {
+    "i": 0,
+    "prompt": "Write a Python function that merges two sorted lists into one sorted list. Code only.",
+    "sha1": "6bfb1338afa59e80",
+    "n": 112,
+    "content": "```python\ndef merge_sorted_lists(list1, list2):\n    merged = []\n    i, j = 0, 0\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            merged.append(list1[i])\n            i += 1\n        else:\n            merged.append(list2[j])\n            j += 1\n    merged.extend(list1[i:])\n    merged.extend(list2[j:])\n    return merged\n```"
+   },
+   {
+    "i": 1,
+    "prompt": "Explain in exactly three sentences why binary search requires a sorted array.",
+    "sha1": "3c5008acb7c0a292",
+    "n": 75,
+    "content": "Binary search relies on the ability to eliminate half of the remaining elements after each comparison, which is only possible if the array is sorted. Without a sorted order, comparing the middle element to the target provides no information about where the target might be located in the other half. Consequently, the algorithm cannot guarantee finding the element in logarithmic time and would fail to function correctly."
+   },
+   {
+    "i": 2,
+    "prompt": "What is 17 * 23 + 456? Show the arithmetic step by step.",
+    "sha1": "eed96efc77e00836",
+    "n": 256,
+    "content": "Here is the step-by-step arithmetic for the expression $17 \\times 23 + 456$.\n\nAccording to the order of operations (PEMDAS/BODMAS), multiplication must be performed before addition.\n\n### Step 1: Perform the Multiplication\nCalculate $17 \\times 23$.\n\nWe can break this down using the distributive property:\n$$17 \\times 23 = 17 \\times (20 + 3)$$\n$$= (17 \\times 20) + (17 \\times 3)$$\n\nCalculate each part:\n1.  $17 \\times 20 = 340$\n2.  $17 \\times 3 = 51$\n\nAdd the results together:\n$$340 + 51 = 391$$\n\nSo, **$17 \\times 23 = 391$**.\n\n### Step 2: Perform the Addition\nNow, add the result from Step 1 to 456.\n\n$$391 + 456$$\n\nLet's add them column by column:\n\n```text\n  39"
+   },
+   {
+    "i": 3,
+    "prompt": "Write a SQL query that returns the second-highest salary from a table `emp(id, salary)`.",
+    "sha1": "c5f4aae9b0075679",
+    "n": 256,
+    "content": "# SQL Query for Second-Highest Salary\n\n## Approach\n\nThere are several ways to solve this. Here are the most common and robust methods:\n\n### Method 1: Using `DENSE_RANK()` (Recommended)\n\n```sql\nSELECT salary\nFROM (\n    SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rank\n    FROM emp\n) ranked\nWHERE rank = 2;\n```\n\n**Why `DENSE_RANK()`?**\n- `DENSE_RANK()` assigns the same rank to duplicate salaries and does **not** skip numbers.\n- If the top salary appears multiple times, the second-highest *distinct* salary still gets rank 2.\n- This correctly handles ties (e.g., salaries `[100, 100, 90, 80]` \u2192 second-highest is `90`).\n\n---\n\n### Method 2: Using `LIMIT` / `OFFSET` (MySQL/PostgreSQL)\n\n```sql\nSELECT DISTINCT salary\nFROM emp\nORDER BY salary DESC\nLIMIT 1 OFFSET 1;\n```\n\n> \u26a0\ufe0f **Caveat:** This returns the second row in the sorted list, which may **not** be the"
+   },
+   {
+    "i": 4,
+    "prompt": "List the first 12 prime numbers, comma separated, nothing else.",
+    "sha1": "86c7b5dbafeec358",
+    "n": 43,
+    "content": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37"
+   },
+   {
+    "i": 5,
+    "prompt": "Write a Rust function `fn rev(s: &str) -> String` that reverses a string by grapheme-free chars.",
+    "sha1": "407209ad0118b632",
+    "n": 27,
+    "content": "```rust\nfn rev(s: &str) -> String {\n    s.chars().rev().collect()\n}\n```"
+   },
+   {
+    "i": 6,
+    "prompt": "Summarise the difference between a process and a thread in one paragraph.",
+    "sha1": "80cedca198542b4c",
+    "n": 84,
+    "content": "A process is an independent program in execution with its own memory space and resources, whereas a thread is a lightweight unit of execution within a process that shares the same memory space and resources with other threads in that process. While processes provide isolation and security, making them heavier to create and manage, threads allow for concurrent execution within a single application, enabling faster communication and lower overhead since they do not require separate memory allocation."
+   },
+   {
+    "i": 7,
+    "prompt": "Write a regex that matches an RFC-5322-ish email address and explain each part.",
+    "sha1": "45077a74de1902d0",
+    "n": 256,
+    "content": "# RFC-5322-ish Email Address Regex\n\n## The Regex\n\n```regex\n^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$\n```\n\n> **Note:** This is a *practical* approximation of RFC 5322, not a full implementation. A truly complete RFC 5322 regex is extremely complex (handling quoted strings, comments, IP literals, etc.) and rarely used in practice. This version covers the vast majority of real-world email addresses.\n\n---\n\n## Breakdown by Part\n\n### 1. Anchors\n```\n^ ... $\n```\n- `^` \u2014 Asserts the start of the string.\n- `$` \u2014 Asserts the end of the string.\n- Ensures the **entire** string is a valid email, not just a substring.\n\n---\n\n### 2. Local Part"
+   },
+   {
+    "i": 8,
+    "prompt": "Implement quicksort in C with an in-place Lomuto partition. Code only.",
+    "sha1": "d942421d2c551746",
+    "n": 256,
+    "content": "```c\n#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            swap(&arr[i], &arr[j]);\n        }\n    }\n    swap(&arr[i + 1], &arr[high]);\n    return i + 1;\n}\n\nvoid quicksort(int arr[], int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quicksort(arr, low, pi - 1);\n        quicksort(arr, pi + 1, high);\n    }\n}\n\nint main() {\n    int arr[] = {10, 7, 2, 1, 5, 3, 8, 4, 6, "
+   },
+   {
+    "i": 9,
+    "prompt": "Name the seven layers of the OSI model in order, one per line, nothing else.",
+    "sha1": "13d3e56bd3cf4734",
+    "n": 15,
+    "content": "Physical\nData Link\nNetwork\nTransport\nSession\nPresentation\nApplication"
+   }
+  ]
+ },
+ "turbo4": {
+  "status": "OK",
+  "kv": "turbo4",
+  "argv": [
+   "/home/ollama/turbo4/buun-llama-cpp/build/bin/llama-server",
+   "-m",
+   "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+   "-ngl",
+   "99",
+   "-fa",
+   "on",
+   "-ctk",
+   "turbo4",
+   "-ctv",
+   "turbo4",
+   "-c",
+   "8192",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "18098",
+   "--no-warmup",
+   "-ctxcp",
+   "0",
+   "--parallel",
+   "1",
+   "--chat-template-file",
+   "/data/projects/q27b_on_12gb/models/templates/chat_template.jinja",
+   "--spec-type",
+   "none"
+  ],
+  "probes": [
+   {
+    "i": 0,
+    "prompt": "Write a Python function that merges two sorted lists into one sorted list. Code only.",
+    "sha1": "6bfb1338afa59e80",
+    "n": 112,
+    "content": "```python\ndef merge_sorted_lists(list1, list2):\n    merged = []\n    i, j = 0, 0\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            merged.append(list1[i])\n            i += 1\n        else:\n            merged.append(list2[j])\n            j += 1\n    merged.extend(list1[i:])\n    merged.extend(list2[j:])\n    return merged\n```"
+   },
+   {
+    "i": 1,
+    "prompt": "Explain in exactly three sentences why binary search requires a sorted array.",
+    "sha1": "3c5008acb7c0a292",
+    "n": 75,
+    "content": "Binary search relies on the ability to eliminate half of the remaining elements after each comparison, which is only possible if the array is sorted. Without a sorted order, comparing the middle element to the target provides no information about where the target might be located in the other half. Consequently, the algorithm cannot guarantee finding the element in logarithmic time and would fail to function correctly."
+   },
+   {
+    "i": 2,
+    "prompt": "What is 17 * 23 + 456? Show the arithmetic step by step.",
+    "sha1": "da88c0067ac600af",
+    "n": 256,
+    "content": "To solve the expression $17 \\times 23 + 456$, we must follow the order of operations (PEMDAS/BODMAS), which dictates that multiplication is performed before addition.\n\n### Step 1: Perform the Multiplication\nFirst, calculate $17 \\times 23$.\n\nWe can break this down using the distributive property:\n$$17 \\times 23 = 17 \\times (20 + 3)$$\n$$= (17 \\times 20) + (17 \\times 3)$$\n\nCalculate each part:\n1.  $17 \\times 20 = 340$\n2.  $17 \\times 3 = 51$\n\nAdd these results together:\n$$340 + 51 = 391$$\n\nSo, $17 \\times 23 = 391$.\n\n### Step 2: Perform the Addition\nNow, substitute the result from Step 1 back into the original expression:\n$$391 + 456$$\n\nAlign the numbers by place value and add:\n\n```text\n  391\n+"
+   },
+   {
+    "i": 3,
+    "prompt": "Write a SQL query that returns the second-highest salary from a table `emp(id, salary)`.",
+    "sha1": "eb929acb82177c92",
+    "n": 256,
+    "content": "# SQL Query for Second-Highest Salary\n\n## Approach\n\nThere are several ways to solve this. Here are the most common and robust methods:\n\n### Method 1: Using `DENSE_RANK()` (Recommended)\n\n```sql\nSELECT salary\nFROM (\n    SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rank\n    FROM emp\n) ranked\nWHERE rank = 2;\n```\n\n**Why `DENSE_RANK`?**  \n- `DENSE_RANK()` assigns the same rank to duplicate salaries and does **not** skip numbers.  \n- If the top two salaries are both `1000`, the next distinct salary gets rank `2`.  \n- This correctly returns the **second-highest distinct** salary.\n\n> \u26a0\ufe0f If you want the second-highest *row* (including duplicates), use `ROW_NUMBER()` instead.\n\n---\n\n### Method 2: Using `LIMIT` / `OFFSET` (MySQL/PostgreSQL)\n\n```sql\nSELECT DISTINCT salary\nFROM emp\nORDER BY salary DESC\nLIMIT 1 OFFSET 1;\n```\n\n---\n\n### Method 3: Using a Subquery with `MAX`\n\n```sql\nSELECT MAX(salary)\n"
+   },
+   {
+    "i": 4,
+    "prompt": "List the first 12 prime numbers, comma separated, nothing else.",
+    "sha1": "86c7b5dbafeec358",
+    "n": 43,
+    "content": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37"
+   },
+   {
+    "i": 5,
+    "prompt": "Write a Rust function `fn rev(s: &str) -> String` that reverses a string by grapheme-free chars.",
+    "sha1": "407209ad0118b632",
+    "n": 27,
+    "content": "```rust\nfn rev(s: &str) -> String {\n    s.chars().rev().collect()\n}\n```"
+   },
+   {
+    "i": 6,
+    "prompt": "Summarise the difference between a process and a thread in one paragraph.",
+    "sha1": "f86ed5d55c10b06e",
+    "n": 87,
+    "content": "A process is an independent program in execution with its own memory space and resources, whereas a thread is a lightweight unit of execution within a process that shares the same memory space and resources with other threads in that process. While processes provide isolation and security, making them heavier to create and communicate with, threads allow for concurrent execution within a single application, enabling faster context switching and easier data sharing but requiring careful synchronization to avoid race conditions."
+   },
+   {
+    "i": 7,
+    "prompt": "Write a regex that matches an RFC-5322-ish email address and explain each part.",
+    "sha1": "45077a74de1902d0",
+    "n": 256,
+    "content": "# RFC-5322-ish Email Address Regex\n\n## The Regex\n\n```regex\n^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$\n```\n\n> **Note:** This is a *practical* approximation of RFC 5322, not a full implementation. A truly complete RFC 5322 regex is extremely complex (handling quoted strings, comments, IP literals, etc.) and rarely used in practice. This version covers the vast majority of real-world email addresses.\n\n---\n\n## Breakdown by Part\n\n### 1. Anchors\n```\n^ ... $\n```\n- `^` \u2014 Asserts the start of the string.\n- `$` \u2014 Asserts the end of the string.\n- Ensures the **entire** string is a valid email, not just a substring.\n\n---\n\n### 2. Local Part"
+   },
+   {
+    "i": 8,
+    "prompt": "Implement quicksort in C with an in-place Lomuto partition. Code only.",
+    "sha1": "8991798881651bfd",
+    "n": 256,
+    "content": "```c\n#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            swap(&arr[i], &arr[j]);\n        }\n    }\n    swap(&arr[i + 1], &arr[high]);\n    return i + 1;\n}\n\nvoid quicksort(int arr[], int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quicksort(arr, low, pi - 1);\n        quicksort(arr, pi + 1, high);\n    }\n}\n\nint main() {\n    int arr[] = {10, 7, 2, 1, 5, 3, 8, 4, 6, "
+   },
+   {
+    "i": 9,
+    "prompt": "Name the seven layers of the OSI model in order, one per line, nothing else.",
+    "sha1": "13d3e56bd3cf4734",
+    "n": 15,
+    "content": "Physical\nData Link\nNetwork\nTransport\nSession\nPresentation\nApplication"
+   }
+  ]
+ },
+ "q4_0": {
+  "status": "OK",
+  "kv": "q4_0",
+  "argv": [
+   "/home/ollama/turbo4/buun-llama-cpp/build/bin/llama-server",
+   "-m",
+   "/data/projects/q27b_on_12gb/models/unsloth-q27b/Qwen3.8-27B-UD-IQ3_XXS.gguf",
+   "-ngl",
+   "99",
+   "-fa",
+   "on",
+   "-ctk",
+   "q4_0",
+   "-ctv",
+   "q4_0",
+   "-c",
+   "8192",
+   "--host",
+   "127.0.0.1",
+   "--port",
+   "18098",
+   "--no-warmup",
+   "-ctxcp",
+   "0",
+   "--parallel",
+   "1",
+   "--chat-template-file",
+   "/data/projects/q27b_on_12gb/models/templates/chat_template.jinja",
+   "--spec-type",
+   "none"
+  ],
+  "probes": [
+   {
+    "i": 0,
+    "prompt": "Write a Python function that merges two sorted lists into one sorted list. Code only.",
+    "sha1": "6bfb1338afa59e80",
+    "n": 112,
+    "content": "```python\ndef merge_sorted_lists(list1, list2):\n    merged = []\n    i, j = 0, 0\n    while i < len(list1) and j < len(list2):\n        if list1[i] <= list2[j]:\n            merged.append(list1[i])\n            i += 1\n        else:\n            merged.append(list2[j])\n            j += 1\n    merged.extend(list1[i:])\n    merged.extend(list2[j:])\n    return merged\n```"
+   },
+   {
+    "i": 1,
+    "prompt": "Explain in exactly three sentences why binary search requires a sorted array.",
+    "sha1": "d5671acf282d0950",
+    "n": 78,
+    "content": "Binary search relies on the ability to eliminate half of the remaining elements after each comparison, which is only possible if the data is ordered. Without a sorted sequence, comparing the middle element to the target provides no information about where the target might be located in the unsorted halves. Consequently, the algorithm cannot guarantee finding the element or correctly determining its absence without resorting to a linear scan."
+   },
+   {
+    "i": 2,
+    "prompt": "What is 17 * 23 + 456? Show the arithmetic step by step.",
+    "sha1": "3562d9abf938184d",
+    "n": 256,
+    "content": "Here is the step-by-step arithmetic for the expression $17 \\times 23 + 456$.\n\nAccording to the order of operations (PEMDAS/BODMAS), multiplication must be performed before addition.\n\n### Step 1: Perform the Multiplication\nCalculate $17 \\times 23$.\n\nWe can break this down using the distributive property:\n$$17 \\times 23 = 17 \\times (20 + 3)$$\n$$= (17 \\times 20) + (17 \\times 3)$$\n\nCalculate each part:\n1.  $17 \\times 20 = 340$\n2.  $17 \\times 3 = 51$\n\nAdd the results together:\n$$340 + 51 = 391$$\n\nSo, $17 \\times 23 = 391$.\n\n### Step 2: Perform the Addition\nNow, add the result from Step 1 to 456.\n\n$$391 + 456$$\n\nLet's add them column by column:\n*   **Ones place:** $1"
+   },
+   {
+    "i": 3,
+    "prompt": "Write a SQL query that returns the second-highest salary from a table `emp(id, salary)`.",
+    "sha1": "bdb7d898a17e2886",
+    "n": 256,
+    "content": "# SQL Query for Second-Highest Salary\n\n## Approach\n\nThere are several ways to solve this. Here are the most common and robust methods:\n\n### Method 1: Using `DENSE_RANK()` (Recommended)\n\n```sql\nSELECT salary\nFROM (\n    SELECT salary, DENSE_RANK() OVER (ORDER BY salary DESC) AS rank\n    FROM emp\n) ranked\nWHERE rank = 2;\n```\n\n**Why `DENSE_RANK()`?**  \nIf multiple employees share the highest salary, `DENSE_RANK()` ensures the next distinct salary gets rank 2. This correctly handles ties.\n\n---\n\n### Method 2: Using `LIMIT` / `OFFSET` (MySQL/PostgreSQL)\n\n```sql\nSELECT DISTINCT salary\nFROM emp\nORDER BY salary DESC\nLIMIT 1 OFFSET 1;\n```\n\n> \u26a0\ufe0f **Caveat:** This returns the second row in the sorted list, which may be a duplicate of the highest salary if there are ties. Use `DISTINCT` to mitigate this, but it still won't handle all edge cases perfectly.\n\n---\n\n### Method 3: Using a Subquery with `MAX`\n\n```sql\nSELECT MAX(salary) AS second_highest"
+   },
+   {
+    "i": 4,
+    "prompt": "List the first 12 prime numbers, comma separated, nothing else.",
+    "sha1": "86c7b5dbafeec358",
+    "n": 43,
+    "content": "2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37"
+   },
+   {
+    "i": 5,
+    "prompt": "Write a Rust function `fn rev(s: &str) -> String` that reverses a string by grapheme-free chars.",
+    "sha1": "407209ad0118b632",
+    "n": 27,
+    "content": "```rust\nfn rev(s: &str) -> String {\n    s.chars().rev().collect()\n}\n```"
+   },
+   {
+    "i": 6,
+    "prompt": "Summarise the difference between a process and a thread in one paragraph.",
+    "sha1": "a2875b3f379d3596",
+    "n": 45,
+    "content": "A process is an independent program in execution with its own memory space and resources, whereas a thread is a lightweight unit of execution within a process that shares the same memory space and resources with other threads in the same process."
+   },
+   {
+    "i": 7,
+    "prompt": "Write a regex that matches an RFC-5322-ish email address and explain each part.",
+    "sha1": "9b7f1a5561db0295",
+    "n": 256,
+    "content": "# RFC-5322-ish Email Address Regex\n\n## The Regex\n\n```regex\n^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$\n```\n\n## Breakdown by Part\n\n### 1. Anchors\n```\n^ ... $\n```\n- `^` \u2014 Asserts the start of the string.\n- `$` \u2014 Asserts the end of the string.\n- Together they ensure the **entire** string is a valid email, not just a substring.\n\n### 2. Local Part (before `@`)\n```\n[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+\n```\n- Matches **one or more** characters from the allowed set in the local part.\n- RFC 5322 allows a wide range of characters in the local part, including:\n  -"
+   },
+   {
+    "i": 8,
+    "prompt": "Implement quicksort in C with an in-place Lomuto partition. Code only.",
+    "sha1": "d942421d2c551746",
+    "n": 256,
+    "content": "```c\n#include <stdio.h>\n\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            swap(&arr[i], &arr[j]);\n        }\n    }\n    swap(&arr[i + 1], &arr[high]);\n    return i + 1;\n}\n\nvoid quicksort(int arr[], int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quicksort(arr, low, pi - 1);\n        quicksort(arr, pi + 1, high);\n    }\n}\n\nint main() {\n    int arr[] = {10, 7, 2, 1, 5, 3, 8, 4, 6, "
+   },
+   {
+    "i": 9,
+    "prompt": "Name the seven layers of the OSI model in order, one per line, nothing else.",
+    "sha1": "13d3e56bd3cf4734",
+    "n": 15,
+    "content": "Physical\nData Link\nNetwork\nTransport\nSession\nPresentation\nApplication"
+   }
+  ]
+ }
+}

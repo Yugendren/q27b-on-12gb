@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: >-
+  If you use this work, please cite the paper below. Corrections and
+  suggestions are welcome at the contact address given.
+title: >-
+  Quality per Gigabyte: Measuring Qwen3.8-27B Under 4 Bits on a 12 GB
+  Consumer GPU
+type: software
+authors:
+  - name: "Mericanii"
+    given-names: "Yugendren"
+    affiliation: "Mericanii (independent research lab)"
+    email: 19thkingisreal@gmail.com
+date-released: 2026-08-31
+version: "v1.0-draft"
+license: Apache-2.0
+# url / repository-code: intentionally omitted until the repo is public.
+# Fill in with the real repo URL before launch (see pub/STRUCTURE.md).
+abstract: >-
+  Independent quality-versus-size measurements of sub-4-bit GGUF builds of
+  Qwen3.8-27B on a single RTX 3060 12GB, using llama.cpp and the full
+  164-task HumanEval benchmark. Reports a quality/size curve with confidence
+  intervals and paired significance tests, speculative-decoding ablations,
+  a pre-registered negative result on best-of-n sampling at low bit-width,
+  and a corrected mechanism claim for decode bandwidth by quant format.
+keywords:
+  - quantization
+  - GGUF
+  - llama.cpp
+  - Qwen
+  - HumanEval
+  - consumer GPU
+  - speculative decoding
+  - inference optimization
+contact:
+  - name: "Mericanii (Yugendren)"
+    email: 19thkingisreal@gmail.com

@@ -1,0 +1,114 @@
+[
+ {
+  "n_prompt": 1,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 19.556819,
+  "stddev_ts": 1.931932,
+  "ms_per_batch": 51.13306003394519
+ },
+ {
+  "n_prompt": 2,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 35.300007,
+  "stddev_ts": 2.721634,
+  "ms_per_batch": 56.657212560892695
+ },
+ {
+  "n_prompt": 3,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 46.830195,
+  "stddev_ts": 2.258363,
+  "ms_per_batch": 64.06123228827042
+ },
+ {
+  "n_prompt": 4,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 54.980282,
+  "stddev_ts": 2.176665,
+  "ms_per_batch": 72.75335546660165
+ },
+ {
+  "n_prompt": 5,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 62.966548,
+  "stddev_ts": 2.390405,
+  "ms_per_batch": 79.40724335086624
+ },
+ {
+  "n_prompt": 6,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 67.261289,
+  "stddev_ts": 2.292029,
+  "ms_per_batch": 89.20435646126258
+ },
+ {
+  "n_prompt": 8,
+  "n_gen": 0,
+  "n_depth": 0,
+  "avg_ts": 75.041981,
+  "stddev_ts": 2.142134,
+  "ms_per_batch": 106.60699375726767
+ },
+ {
+  "n_prompt": 1,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 19.65193,
+  "stddev_ts": 1.443042,
+  "ms_per_batch": 50.885587318904555
+ },
+ {
+  "n_prompt": 2,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 35.005202,
+  "stddev_ts": 2.034682,
+  "ms_per_batch": 57.13436534375663
+ },
+ {
+  "n_prompt": 3,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 46.100467,
+  "stddev_ts": 2.308061,
+  "ms_per_batch": 65.07526268660142
+ },
+ {
+  "n_prompt": 4,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 54.189555,
+  "stddev_ts": 2.224085,
+  "ms_per_batch": 73.81496304961352
+ },
+ {
+  "n_prompt": 5,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 62.164817,
+  "stddev_ts": 2.414195,
+  "ms_per_batch": 80.43134752572344
+ },
+ {
+  "n_prompt": 6,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 66.481676,
+  "stddev_ts": 2.279331,
+  "ms_per_batch": 90.25043231461254
+ },
+ {
+  "n_prompt": 8,
+  "n_gen": 0,
+  "n_depth": 4096,
+  "avg_ts": 74.375763,
+  "stddev_ts": 2.192399,
+  "ms_per_batch": 107.5619217513103
+ }
+]

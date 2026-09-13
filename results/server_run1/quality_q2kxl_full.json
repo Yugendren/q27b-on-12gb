@@ -1,0 +1,549 @@
+{
+  "endpoint": "http://127.0.0.1:18081",
+  "model_info": {
+    "raw": {
+      "models": [
+        {
+          "name": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf",
+          "model": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf",
+          "aliases": [
+            "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf"
+          ],
+          "tags": [],
+          "object": "model",
+          "created": 1787459724,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 248320,
+            "n_ctx": 8192,
+            "n_ctx_train": 262144,
+            "n_embd": 5120,
+            "n_params": 27320697856,
+            "size": 9817985024,
+            "ftype": "Q2_K - Medium"
+          }
+        }
+      ]
+    },
+    "model_id": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf"
+  },
+  "gsm8k": {
+    "n": 50,
+    "correct": 48,
+    "score": 0.96,
+    "results": [
+      {
+        "index": 0,
+        "reference": "18",
+        "predicted": "18",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 1,
+        "reference": "3",
+        "predicted": "3",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 2,
+        "reference": "70000",
+        "predicted": "70000",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 3,
+        "reference": "540",
+        "predicted": "540",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 4,
+        "reference": "20",
+        "predicted": "20",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 5,
+        "reference": "64",
+        "predicted": "64",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 6,
+        "reference": "260",
+        "predicted": "260",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 7,
+        "reference": "160",
+        "predicted": "160",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 8,
+        "reference": "45",
+        "predicted": "45",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 9,
+        "reference": "460",
+        "predicted": "460",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 10,
+        "reference": "366",
+        "predicted": "366",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 11,
+        "reference": "694",
+        "predicted": "694",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 12,
+        "reference": "13",
+        "predicted": "12",
+        "correct": false,
+        "error": null
+      },
+      {
+        "index": 13,
+        "reference": "18",
+        "predicted": "18",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 14,
+        "reference": "60",
+        "predicted": "60",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 15,
+        "reference": "125",
+        "predicted": "125",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 16,
+        "reference": "230",
+        "predicted": "230",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 17,
+        "reference": "57500",
+        "predicted": "57500",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 18,
+        "reference": "7",
+        "predicted": "7",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 19,
+        "reference": "6",
+        "predicted": "6",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 20,
+        "reference": "15",
+        "predicted": "15",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 21,
+        "reference": "14",
+        "predicted": "14",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 22,
+        "reference": "7",
+        "predicted": "7",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 23,
+        "reference": "8",
+        "predicted": "8",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 24,
+        "reference": "26",
+        "predicted": "26.00",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 25,
+        "reference": "2",
+        "predicted": "2",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 26,
+        "reference": "243",
+        "predicted": "243",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 27,
+        "reference": "16",
+        "predicted": "16",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 28,
+        "reference": "25",
+        "predicted": "25",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 29,
+        "reference": "104",
+        "predicted": "104",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 30,
+        "reference": "109",
+        "predicted": "109",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 31,
+        "reference": "80",
+        "predicted": "80",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 32,
+        "reference": "35",
+        "predicted": "35",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 33,
+        "reference": "70",
+        "predicted": "70",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 34,
+        "reference": "23",
+        "predicted": "23",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 35,
+        "reference": "9",
+        "predicted": "9",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 36,
+        "reference": "75",
+        "predicted": "75",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 37,
+        "reference": "2",
+        "predicted": "2",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 38,
+        "reference": "10",
+        "predicted": "10",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 39,
+        "reference": "18",
+        "predicted": "18",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 40,
+        "reference": "8",
+        "predicted": "8",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 41,
+        "reference": "200",
+        "predicted": "200",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 42,
+        "reference": "26",
+        "predicted": "26",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 43,
+        "reference": "48",
+        "predicted": "48",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 44,
+        "reference": "20",
+        "predicted": "20",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 45,
+        "reference": "104",
+        "predicted": "44",
+        "correct": false,
+        "error": null
+      },
+      {
+        "index": 46,
+        "reference": "163",
+        "predicted": "163",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 47,
+        "reference": "800",
+        "predicted": "800",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 48,
+        "reference": "8",
+        "predicted": "8",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 49,
+        "reference": "30",
+        "predicted": "30",
+        "correct": true,
+        "error": null
+      }
+    ]
+  },
+  "humaneval": {
+    "n": 20,
+    "passed": 16,
+    "score": 0.8,
+    "results": [
+      {
+        "index": 0,
+        "task_id": "HumanEval/0",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 1,
+        "task_id": "HumanEval/1",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_ocprom05.py\", line 6\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 33)\n"
+      },
+      {
+        "index": 2,
+        "task_id": "HumanEval/2",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 3,
+        "task_id": "HumanEval/3",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_wrvt__qt.py\", line 1, in <module>\n    def below_zero(operations: List[int]) -> bool:\n                               ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 4,
+        "task_id": "HumanEval/4",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 5,
+        "task_id": "HumanEval/5",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 6,
+        "task_id": "HumanEval/6",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 7,
+        "task_id": "HumanEval/7",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 8,
+        "task_id": "HumanEval/8",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_nbtat91m.py\", line 1, in <module>\n    def sum_product(numbers: List[int]) -> Tuple[int, int]:\n                             ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 9,
+        "task_id": "HumanEval/9",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval_g1iurl2c.py\", line 1, in <module>\n    def rolling_max(numbers: List[int]) -> List[int]:\n                             ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      },
+      {
+        "index": 10,
+        "task_id": "HumanEval/10",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 11,
+        "task_id": "HumanEval/11",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 12,
+        "task_id": "HumanEval/12",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 13,
+        "task_id": "HumanEval/13",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 14,
+        "task_id": "HumanEval/14",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 15,
+        "task_id": "HumanEval/15",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 16,
+        "task_id": "HumanEval/16",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 17,
+        "task_id": "HumanEval/17",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 18,
+        "task_id": "HumanEval/18",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 19,
+        "task_id": "HumanEval/19",
+        "passed": true,
+        "error": null
+      }
+    ]
+  },
+  "aggregate": {
+    "gsm8k_score": 0.96,
+    "humaneval_score": 0.8
+  },
+  "wall_time_s": 1281.88,
+  "timestamp": "2026-08-23T04:56:46.575713+00:00"
+}

@@ -1,0 +1,22 @@
+# Example config for harness/run_matrix.py.
+# Copy to matrix.yaml and edit. Parsed by harness/yaml_lite.py (a minimal
+# stdlib-only YAML subset) — keep it flat: a list of mappings with plain
+# string values, no nesting.
+#
+# Fields per entry:
+#   name          - short label for the results row
+#   gguf_path     - path to the .gguf file (absolute, or relative to repo root)
+#   server_flags  - extra flags for `llama-server` (run_matrix.py adds -m/--port);
+#                   should normally include --jinja for eval_quality.py's
+#                   chat-completions calls to use the model's chat template
+#   bench_flags   - extra flags for `llama-bench` (run_matrix.py adds -m)
+
+- name: qwen3-0.6b-q4_k_m
+  gguf_path: models/Qwen3-0.6B-Q4_K_M.gguf
+  server_flags: "--jinja -c 4096 -ngl 999"
+  bench_flags: "-ngl 999"
+
+- name: qwen3-0.6b-q8_0
+  gguf_path: models/Qwen3-0.6B-Q8_0.gguf
+  server_flags: "--jinja -c 4096 -ngl 999"
+  bench_flags: "-ngl 999"

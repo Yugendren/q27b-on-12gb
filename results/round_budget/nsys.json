@@ -1,0 +1,60 @@
+{
+ "mtp2": {
+  "tag": "mtp2",
+  "decode_tps": 36.25183933798534,
+  "predicted_n": 2600,
+  "predicted_ms": 71692.914,
+  "draft_n": 1890,
+  "draft_n_accepted": 1653,
+  "wall_s": 72.06876492500305,
+  "report": "/data/projects/q27b_on_12gb/results/round_budget/nsys_mtp2.nsys-rep",
+  "trace": {
+   "n_gpu_ops": 987921,
+   "window_s": 29.961885734,
+   "gpu_busy_s": 29.072628474,
+   "gpu_idle_s": 0.88925726,
+   "gpu_busy_frac": 0.9703203841075032,
+   "n_gaps": 607794,
+   "total_gap_s": 0.88925726,
+   "gap_us_mean": 1.463089895589624,
+   "gap_us_p50": 0.064,
+   "gap_us_p90": 0.928,
+   "gap_us_p99": 9.024,
+   "gap_us_max": 11282.852,
+   "n_gaps_over_100us": 1926,
+   "s_in_gaps_over_100us": 0.608058686,
+   "n_gaps_over_1ms": 35,
+   "s_in_gaps_over_1ms": 0.099967766,
+   "csv": "/data/projects/q27b_on_12gb/results/round_budget/nsys_mtp2_gputrace.csv"
+  }
+ },
+ "nospec": {
+  "tag": "nospec",
+  "decode_tps": 19.885272764236007,
+  "predicted_n": 2600,
+  "predicted_ms": 130699.741,
+  "draft_n": null,
+  "draft_n_accepted": null,
+  "wall_s": 131.02360606193542,
+  "report": "/data/projects/q27b_on_12gb/results/round_budget/nsys_nospec.nsys-rep",
+  "trace": {
+   "n_gpu_ops": 1194037,
+   "window_s": 29.958745789,
+   "gpu_busy_s": 29.312679496,
+   "gpu_idle_s": 0.646066293,
+   "gpu_busy_frac": 0.9784348017253374,
+   "n_gaps": 692024,
+   "total_gap_s": 0.646066293,
+   "gap_us_mean": 0.933589431869415,
+   "gap_us_p50": 0.064,
+   "gap_us_p90": 0.896,
+   "gap_us_p99": 1.472,
+   "gap_us_max": 8602.517,
+   "n_gaps_over_100us": 1190,
+   "s_in_gaps_over_100us": 0.484362337,
+   "n_gaps_over_1ms": 34,
+   "s_in_gaps_over_1ms": 0.063319265,
+   "csv": "/data/projects/q27b_on_12gb/results/round_budget/nsys_nospec_gputrace.csv"
+  }
+ }
+}

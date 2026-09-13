@@ -1,0 +1,29 @@
+exp	build	config	ctx	vram_mib	prefill_ts	decode_ts	accept	note
+exp1	Qwen3.8-27B-UD-Q2_K_XL	nospec	16384	10212	25.63	21.09	-	
+exp1	Qwen3.8-27B-UD-Q2_K_XL	mtp_n2	16384	10588	25.25	35.11	0.78641	
+exp1	Qwen3.8-27B-UD-Q2_K_XL	mtp_n3	16384	10740	26.65	35.39	0.70681	
+exp1	Qwen3.8-27B-UD-Q2_K_XL	mtp_n4	16384	10894	26.34	33.63	0.58125	
+exp1	Qwen3.8-27B-UD-Q2_K_XL	dflash_Q4_K_M_n3	16384	-	-	-	-	FAIL:failed to load
+exp1	Qwen3.8-27B-UD-Q2_K_XL	dflash_Q8_0_n3	16384	-	-	-	-	FAIL:failed to load
+exp1	Qwen3.8-27B-UD-Q2_K_XL	dflash_BF16_n3	16384	-	-	-	-	FAIL:failed to load
+exp1	Qwen3.8-27B-UD-Q2_K_XL	ngram	16384	9762	27.06	86.12	0.75446	
+exp1	Qwen3.8-27B-UD-IQ3_XXS	nospec	16384	11266	25.08	20.25	-	
+exp1	Qwen3.8-27B-UD-IQ3_XXS	mtp_n2	16384	11642	25.62	33.83	0.75949	
+exp1	Qwen3.8-27B-UD-IQ3_XXS	mtp_n3	16384	11794	26.39	33.28	0.65099	
+exp1	Qwen3.8-27B-UD-IQ3_XXS	mtp_n4	16384	11948	-	-	-	
+exp1	Qwen3.8-27B-UD-IQ3_XXS	dflash_Q4_K_M_n3	16384	-	-	-	-	FAIL:failed to load
+exp1	Qwen3.8-27B-UD-IQ3_XXS	dflash_Q8_0_n3	16384	-	-	-	-	FAIL:failed to load
+exp1	Qwen3.8-27B-UD-IQ3_XXS	dflash_BF16_n3	16384	-	-	-	-	FAIL:failed to load
+exp1	Qwen3.8-27B-UD-IQ3_XXS	ngram	16384	10816	26.88	134.40	0.95833	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	8192	9782	27.08	21.05	-	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	16384	9956	26.76	20.98	-	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	32768	10324	27.09	21.00	-	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	49152	10692	27.00	21.00	-	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	65536	11060	26.75	20.99	-	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	81920	11428	27.00	21.00	-	
+exp2	Qwen3.8-27B-UD-Q2_K_XL	kvq4	98304	11796	26.84	21.02	-	
+exp3	Qwen3.8-27B-UD-IQ3_XXS	kv_f16	16384	11718	26.79	20.28	-	
+exp3	Qwen3.8-27B-UD-IQ3_XXS	kv_q8	16384	11266	26.70	20.21	-	
+exp3	Qwen3.8-27B-UD-IQ3_XXS	kv_q4	16384	11010	26.58	20.18	-	
+exp4	Minitron-20B	nospec	16384	10924	38.61	28.44	-	
+exp4	Minitron-20B	mtp_n3	16384	-	-	-	-	FAIL:unknown

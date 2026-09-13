@@ -1,0 +1,159 @@
+{
+  "endpoint": "http://127.0.0.1:18081",
+  "model_info": {
+    "raw": {
+      "models": [
+        {
+          "name": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf",
+          "model": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf",
+          "modified_at": "",
+          "size": "",
+          "digest": "",
+          "type": "model",
+          "description": "",
+          "tags": [
+            ""
+          ],
+          "capabilities": [
+            "completion"
+          ],
+          "parameters": "",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "",
+            "families": [
+              ""
+            ],
+            "parameter_size": "",
+            "quantization_level": ""
+          }
+        }
+      ],
+      "object": "list",
+      "data": [
+        {
+          "id": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf",
+          "aliases": [
+            "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf"
+          ],
+          "tags": [],
+          "object": "model",
+          "created": 1787459446,
+          "owned_by": "llamacpp",
+          "meta": {
+            "vocab_type": 2,
+            "n_vocab": 248320,
+            "n_ctx": 8192,
+            "n_ctx_train": 262144,
+            "n_embd": 5120,
+            "n_params": 27320697856,
+            "size": 9817985024,
+            "ftype": "Q2_K - Medium"
+          }
+        }
+      ]
+    },
+    "model_id": "models/unsloth-q27b/Qwen3.8-27B-UD-Q2_K_XL.gguf"
+  },
+  "gsm8k": {
+    "n": 8,
+    "correct": 8,
+    "score": 1.0,
+    "results": [
+      {
+        "index": 0,
+        "reference": "18",
+        "predicted": "18",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 1,
+        "reference": "3",
+        "predicted": "3",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 2,
+        "reference": "70000",
+        "predicted": "70000",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 3,
+        "reference": "540",
+        "predicted": "540",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 4,
+        "reference": "20",
+        "predicted": "20",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 5,
+        "reference": "64",
+        "predicted": "64",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 6,
+        "reference": "260",
+        "predicted": "260",
+        "correct": true,
+        "error": null
+      },
+      {
+        "index": 7,
+        "reference": "160",
+        "predicted": "160",
+        "correct": true,
+        "error": null
+      }
+    ]
+  },
+  "humaneval": {
+    "n": 4,
+    "passed": 2,
+    "score": 0.5,
+    "results": [
+      {
+        "index": 0,
+        "task_id": "HumanEval/0",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 1,
+        "task_id": "HumanEval/1",
+        "passed": false,
+        "error": "  File \"/tmp/humaneval_6qac5fg2.py\", line 6\n    \"\"\" Input to this function is a string containing multiple groups of nested parentheses. Your goal is to\n    ^\nSyntaxError: unterminated triple-quoted string literal (detected at line 33)\n"
+      },
+      {
+        "index": 2,
+        "task_id": "HumanEval/2",
+        "passed": true,
+        "error": null
+      },
+      {
+        "index": 3,
+        "task_id": "HumanEval/3",
+        "passed": false,
+        "error": "Traceback (most recent call last):\n  File \"/tmp/humaneval__hxlcneq.py\", line 1, in <module>\n    def below_zero(operations: List[int]) -> bool:\n                               ^^^^\nNameError: name 'List' is not defined. Did you mean: 'list'?\n"
+      }
+    ]
+  },
+  "aggregate": {
+    "gsm8k_score": 1.0,
+    "humaneval_score": 0.5
+  },
+  "wall_time_s": 219.62,
+  "timestamp": "2026-08-23T04:34:26.125048+00:00"
+}

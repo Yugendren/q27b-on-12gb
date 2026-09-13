@@ -1,0 +1,214 @@
+{
+  "ctx16384": {
+    "T_base_ms": 49.553024963089065,
+    "T_round_alpha0_ms": {
+      "1": 61.251440215009616,
+      "2": 74.75836730894575,
+      "3": 88.90998935302336
+    },
+    "fit_slope_ms_per_drafted_token": 13.829274569006873,
+    "fit_intercept_ms": 47.31471648764583,
+    "fit_r2": 0.9998189286052731,
+    "fixed_spec_overhead_ms": -2.238308475443233,
+    "alpha1": {
+      "1": {
+        "ms_per_token": 30.752342318580205,
+        "T_round_ms": 61.50468463716041,
+        "mean_len": 2.0
+      },
+      "2": {
+        "ms_per_token": 25.033639041773572,
+        "T_round_ms": 75.10091712532072,
+        "mean_len": 3.0
+      },
+      "3": {
+        "ms_per_token": 22.374451891372416,
+        "T_round_ms": 89.49780756548967,
+        "mean_len": 3.99
+      }
+    },
+    "reject_path_cost_ms": {
+      "1": -0.253244422150793,
+      "2": -0.3425498163749694,
+      "3": -0.5878182124663027
+    },
+    "real_n2": {
+      "decode_tps": 34.14596434584399,
+      "acceptance": 0.7813504823151125,
+      "mean_len": 2.56,
+      "T_round_ms": 74.97225657683278
+    },
+    "decomposition": {
+      "d_verify_per_extra_token_ms": 8.010082797602001,
+      "mtp_draft_forward_ms": 5.819191771404872,
+      "fixed_host_overhead_ms": -2.238308475443233,
+      "budget_at_n2": {
+        "T_round_measured_ms": 74.97225657683278,
+        "verify_forward_ms": 49.553024963089065,
+        "verify_widening_2extra_ms": 16.020165595204002,
+        "mtp_draft_2_forwards_ms": 11.638383542809745,
+        "fixed_host_ms": -2.238308475443233,
+        "unexplained_ms": -0.0010090488268019726
+      }
+    }
+  },
+  "ctx8192": {
+    "T_base_ms": 49.87777999377638,
+    "T_round_alpha0_ms": {
+      "1": 61.33950691297605,
+      "2": 74.95856956159794,
+      "3": 89.09239252558983,
+      "4": 100.50696890553985,
+      "5": 115.1779294553212
+    },
+    "fit_slope_ms_per_drafted_token": 13.322524442863221,
+    "fit_intercept_ms": 48.24750014361531,
+    "fit_r2": 0.998879848081129,
+    "fixed_spec_overhead_ms": -1.6302798501610667,
+    "alpha1": {
+      "5": {
+        "ms_per_token": 19.42811105335742,
+        "T_round_ms": 116.56866632014452,
+        "mean_len": 5.96
+      }
+    },
+    "reject_path_cost_ms": {
+      "5": -1.3907368648233103
+    }
+  },
+  "verify_batch": {
+    "depth0": {
+      "ms_per_forward": {
+        "1": 51.13306003394519,
+        "2": 56.657212560892695,
+        "3": 64.06123228827042,
+        "4": 72.75335546660165,
+        "5": 79.40724335086624,
+        "6": 89.20435646126258,
+        "8": 106.60699375726767
+      },
+      "marginal_ms_per_extra_token": 8.010082797602001,
+      "fixed_forward_ms": 41.075864684092636,
+      "r2": 0.9952516747304736
+    },
+    "depth4096": {
+      "ms_per_forward": {
+        "1": 50.885587318904555,
+        "2": 57.13436534375663,
+        "3": 65.07526268660142,
+        "4": 73.81496304961352,
+        "5": 80.43134752572344,
+        "6": 90.25043231461254,
+        "8": 107.5619217513103
+      },
+      "marginal_ms_per_extra_token": 8.152049700061504,
+      "fixed_forward_ms": 41.24920552696269,
+      "r2": 0.9972113747666623
+    }
+  },
+  "nsys": {
+    "mtp2": {
+      "tag": "mtp2",
+      "decode_tps": 36.25183933798534,
+      "predicted_n": 2600,
+      "predicted_ms": 71692.914,
+      "draft_n": 1890,
+      "draft_n_accepted": 1653,
+      "wall_s": 72.06876492500305,
+      "report": "/data/projects/q27b_on_12gb/results/round_budget/nsys_mtp2.nsys-rep",
+      "trace": {
+        "n_gpu_ops": 987921,
+        "window_s": 29.961885734,
+        "gpu_busy_s": 29.072628474,
+        "gpu_idle_s": 0.88925726,
+        "gpu_busy_frac": 0.9703203841075032,
+        "n_gaps": 607794,
+        "total_gap_s": 0.88925726,
+        "gap_us_mean": 1.463089895589624,
+        "gap_us_p50": 0.064,
+        "gap_us_p90": 0.928,
+        "gap_us_p99": 9.024,
+        "gap_us_max": 11282.852,
+        "n_gaps_over_100us": 1926,
+        "s_in_gaps_over_100us": 0.608058686,
+        "n_gaps_over_1ms": 35,
+        "s_in_gaps_over_1ms": 0.099967766,
+        "csv": "/data/projects/q27b_on_12gb/results/round_budget/nsys_mtp2_gputrace.csv"
+      },
+      "tokens_in_window": 1086.173467892043,
+      "host_idle_ms_per_token": 0.8187064831603723
+    },
+    "nospec": {
+      "tag": "nospec",
+      "decode_tps": 19.885272764236007,
+      "predicted_n": 2600,
+      "predicted_ms": 130699.741,
+      "draft_n": null,
+      "draft_n_accepted": null,
+      "wall_s": 131.02360606193542,
+      "report": "/data/projects/q27b_on_12gb/results/round_budget/nsys_nospec.nsys-rep",
+      "trace": {
+        "n_gpu_ops": 1194037,
+        "window_s": 29.958745789,
+        "gpu_busy_s": 29.312679496,
+        "gpu_idle_s": 0.646066293,
+        "gpu_busy_frac": 0.9784348017253374,
+        "n_gaps": 692024,
+        "total_gap_s": 0.646066293,
+        "gap_us_mean": 0.933589431869415,
+        "gap_us_p50": 0.064,
+        "gap_us_p90": 0.896,
+        "gap_us_p99": 1.472,
+        "gap_us_max": 8602.517,
+        "n_gaps_over_100us": 1190,
+        "s_in_gaps_over_100us": 0.484362337,
+        "n_gaps_over_1ms": 34,
+        "s_in_gaps_over_1ms": 0.063319265,
+        "csv": "/data/projects/q27b_on_12gb/results/round_budget/nsys_nospec_gputrace.csv"
+      },
+      "tokens_in_window": 595.7378316886719,
+      "host_idle_ms_per_token": 1.0844808884617376
+    }
+  },
+  "knobs": {
+    "rb_k_nodraftbackendsamp": {
+      "decode_tps": 33.92165702624291,
+      "vs_shipping_pct": -0.6569072623903827,
+      "acceptance": 0.7813504823151125,
+      "vram_peak_mib": 11828
+    },
+    "rb_k_backendsampling": {
+      "decode_tps": 34.106163619797094,
+      "vs_shipping_pct": -0.11656055645048458,
+      "acceptance": 0.7813504823151125,
+      "vram_peak_mib": 12000
+    },
+    "rb_k_poll": {
+      "decode_tps": 34.11117114718188,
+      "vs_shipping_pct": -0.10189549286034882,
+      "acceptance": 0.7813504823151125,
+      "vram_peak_mib": 11830
+    },
+    "rb_k_noopoffload": {
+      "decode_tps": 34.083530833219314,
+      "vs_shipping_pct": -0.1828430206050946,
+      "acceptance": 0.7813504823151125,
+      "vram_peak_mib": 11830
+    },
+    "rb_k_pmin0": {
+      "decode_tps": 34.14257541214023,
+      "vs_shipping_pct": -0.009924844029696178,
+      "acceptance": 0.7813504823151125,
+      "vram_peak_mib": 11830
+    },
+    "rb_k_mtpadaptive": {
+      "decode_tps": 32.79007135206466,
+      "vs_shipping_pct": -3.9708733367325832,
+      "acceptance": 0.648989898989899,
+      "vram_peak_mib": 11984
+    },
+    "rb_k_ub2048": {
+      "error": "FAIL:out of memory"
+    }
+  }
+}
